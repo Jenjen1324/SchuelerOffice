@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SchülerOffice
 {
-    class MarkStorer
+    class MarkStorer : Form1
     {
+
     }
 }
