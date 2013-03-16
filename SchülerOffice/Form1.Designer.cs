@@ -66,7 +66,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(749, 431);
+            this.tabControl1.Size = new System.Drawing.Size(788, 431);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -89,7 +89,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(741, 405);
+            this.tabPage2.Size = new System.Drawing.Size(780, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Noten";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -138,12 +138,12 @@
             // 
             // button_mark_calculateMark
             // 
-            this.button_mark_calculateMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_mark_calculateMark.Location = new System.Drawing.Point(270, 91);
+            this.button_mark_calculateMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_mark_calculateMark.Location = new System.Drawing.Point(210, 64);
             this.button_mark_calculateMark.Name = "button_mark_calculateMark";
-            this.button_mark_calculateMark.Size = new System.Drawing.Size(75, 23);
+            this.button_mark_calculateMark.Size = new System.Drawing.Size(135, 23);
             this.button_mark_calculateMark.TabIndex = 12;
-            this.button_mark_calculateMark.Text = "Note Linear \r\nberechnen";
+            this.button_mark_calculateMark.Text = "Note Linear berechnen";
             this.button_mark_calculateMark.UseVisualStyleBackColor = true;
             this.button_mark_calculateMark.Click += new System.EventHandler(this.button_mark_calculateMark_Click);
             // 
@@ -271,6 +271,7 @@
             this.treeView_mark.Name = "treeView_mark";
             this.treeView_mark.Size = new System.Drawing.Size(177, 312);
             this.treeView_mark.TabIndex = 8;
+            this.treeView_mark.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_mark_AfterSelect);
             // 
             // dateTimePicker_mark
             // 
@@ -283,7 +284,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 431);
+            this.ClientSize = new System.Drawing.Size(788, 431);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
