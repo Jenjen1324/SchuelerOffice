@@ -8,7 +8,7 @@ using System.Xml;
 
 namespace SchülerOffice
 {
-    class Mark
+    public class Mark
     {
         public string _class;
         public string name;
@@ -27,14 +27,14 @@ namespace SchülerOffice
             this.note = note;
         }
 
-        public string MarkToXml(Mark mark)
+        public static string MarkToXml(Mark mark)
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("_class", this._class);
-            data.Add("name", this.name);
-            data.Add("date", this.date);
-            data.Add("mark", this.mark);
-            data.Add("note", this.note);
+            data.Add("_class", mark._class);
+            data.Add("name", mark.name);
+            data.Add("date", mark.date);
+            data.Add("mark", mark.mark);
+            data.Add("note", mark.note);
 
             StringBuilder xml = new StringBuilder();
             xml.AppendLine("<mark>"); // Add some type of name here
@@ -42,7 +42,7 @@ namespace SchülerOffice
             {
                 xml.AppendLine(String.Format("<item key=\"{0}\">{1}</item>", item.Key, item.Value.ToString()));
             }
-            foreach (float f in points)
+            foreach (float f in mark.points)
             {
                 xml.AppendLine(String.Format("<point>{0}</point>", f));
             }
@@ -50,9 +50,8 @@ namespace SchülerOffice
             return xml.ToString();
         }
 
-        public List<Mark> XmlToMark(string file)
+        public static List<Mark> XmlToMark(string file)
         {
-            throw new NotImplementedException();
             FileStream xmlfs = new FileStream(file, FileMode.Open);
             XmlReader xmlr = XmlReader.Create(xmlfs);
 
@@ -84,6 +83,7 @@ namespace SchülerOffice
                     loaded.Add(current);
                 }
             }
+            xmlfs.Close();
             return loaded;
         }
     }

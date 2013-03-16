@@ -106,19 +106,20 @@ namespace SchülerOffice
             }
         }
 
-
-        private void listBox_mark_marks_SelectedIndexChanged(object sender, EventArgs e)
+        private void treeView_mark_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            foreach (Mark m in Data.marks)
+            try
             {
-                //if (m.name == listBox_mark_marks.SelectedItem.ToString())
-                //{
-                    textBox_mark_name.Text = m.name;
-                    dateTimePicker_mark.Text = m.date.ToString();
-                    textBox_mark_points.Text = m.points[0].ToString();
-                    textBox_mark_mpoints.Text = m.points[1].ToString();
-                    textBox_mark_note.Text = m.note;
-                //}
+                Mark m = Data.marks[(int)treeView_mark.SelectedNode.Tag];
+                textBox_mark_name.Text = m.name;
+                dateTimePicker_mark.Text = m.date.ToString();
+                textBox_mark_points.Text = m.points[0].ToString();
+                textBox_mark_mpoints.Text = m.points[1].ToString();
+                textBox_mark_note.Text = m.note;
+            }
+            catch
+            {
+
             }
         }
     }
