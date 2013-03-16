@@ -13,11 +13,11 @@ namespace SchülerOffice
         public string _class;
         public string name;
         public DateTime date;
-        public float mark;
-        public float[] points;
+        public Single mark;
+        public Single[] points;
         public string note;
 
-        public Mark(string _class, string name, DateTime date, float mark, float[] points, string note)
+        public Mark(string _class, string name, DateTime date, Single mark, Single[] points, string note)
         {
             this._class = _class;
             this.name = name;
