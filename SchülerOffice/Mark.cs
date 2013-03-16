@@ -13,8 +13,8 @@ namespace SchülerOffice
         public string _class;
         public string name;
         public DateTime date;
-        public float mark;
-        public float[] points;
+        public Single mark;
+        public Single[] points;
         public string note;
 
         public Mark(string _class, string name, DateTime date, Single mark, Single[] points, string note)
@@ -63,7 +63,6 @@ namespace SchülerOffice
 
             while (xmlr.Read())
             {
-                // Need some work
 				if(xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.Element)
 				{
 					current = new Mark("","",DateTime.Now,0,new float[0],"");

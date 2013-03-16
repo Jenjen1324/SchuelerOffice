@@ -9,26 +9,33 @@ namespace SchülerOffice
 {
     partial class Form1
     {
-        private void UpdateClasses()
+        private void UpdateList()
         {
-            listBox_mark_classes.Items.Clear();
+            treeView_mark.Nodes.Clear();
             foreach (string s in Data.classes)
             {
-                listBox_mark_classes.Items.Add(s);
+                TreeNode node = new TreeNode(s);
+                node.ToolTipText = s;
+                node.Tag = "Parent";
+                int i = 0;
+                foreach (Mark m in Data.marks)
+                {
+                    if (m._class == s)
+                    {
+                        TreeNode n = new TreeNode(m.name);
+                        n.ToolTipText = m.date.ToString();
+                        n.Tag = i;
+                        node.Nodes.Add(n);
+                    }
+                    i++;
+                }
+                treeView_mark.Nodes.Add(node);
             }
         }
 
-        private void UpdateMarks()
-        {
-            listBox_mark_marks.Items.Clear();
-            foreach (Mark m in Data.marks)
-            {
-                listBox_mark_marks.Items.Add(m.name);
-            }
-        }
         private void button_mark_calculateMark_Click(object sender, EventArgs e)
         {
-            Single mark;
+            float mark;
             try
             {
                 mark = Convert.ToSingle(textBox_mark_points.Text) / Convert.ToSingle(textBox_mark_mpoints.Text) * 5 + 1;
@@ -53,28 +60,13 @@ namespace SchülerOffice
             if(ac.ShowDialog() == DialogResult.OK)
             {
                 Data.classes.Add(ac.name);
-                UpdateClasses();
+                UpdateList();
             }
         }
 
         private void button_mark_deleteClass_Click(object sender, EventArgs e)
         {
-            if(listBox_mark_classes.SelectedIndex > -1)
-            {
-                Data.classes.Remove(listBox_mark_classes.SelectedItem.ToString());
-            }
-            UpdateClasses();
-        }
-
-        private void monthCalendar_mark_date_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            textBox_mark_date.Text = monthCalendar_mark_date.SelectionStart.ToString("dd.MM.yyyy");
-            monthCalendar_mark_date.Visible = false;
-        }
-
-        private void textBox_mark_date_Click(object sender, EventArgs e)
-        {
-            monthCalendar_mark_date.Visible = true;
+            // Needs work
         }
 
         private void button_mark_add_Click(object sender, EventArgs e)
@@ -88,7 +80,15 @@ namespace SchülerOffice
                 string _class;
                 try
                 {
-                    _class = listBox_mark_classes.SelectedItem.ToString();
+                    if (treeView_mark.SelectedNode.Tag.ToString() != "Parent")
+                    {
+                        Data.messageBox("Warnung", "Kein Fach gewählt");
+                        return;
+                    }
+                    else
+                    {
+                        _class = treeView_mark.SelectedNode.Text;
+                    }
                 }
                 catch
                 {
@@ -96,13 +96,29 @@ namespace SchülerOffice
                     return;
                 }
                 string _name = textBox_mark_name.Text;
-                DateTime _date = Convert.ToDateTime(textBox_mark_date.Text);
-                Single _mark = Convert.ToSingle(textBox_mark_mark.Text);
-                Single[] _points = new Single[] {Convert.ToSingle(textBox_mark_points.Text), Convert.ToSingle(textBox_mark_mpoints.Text)};
+                DateTime _date = Convert.ToDateTime(dateTimePicker_mark.Text);
+                float _mark = Convert.ToSingle(textBox_mark_mark.Text);
+                float[] _points = new float[] {Convert.ToSingle(textBox_mark_points.Text), Convert.ToSingle(textBox_mark_mpoints.Text)};
                 string _note = textBox_mark_note.Text;
                 Mark m = new Mark(_class,_name,_date,_mark,_points,_note);
                 Data.marks.Add(m);
-                UpdateMarks();
+                UpdateList();
+            }
+        }
+
+
+        private void listBox_mark_marks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Mark m in Data.marks)
+            {
+                //if (m.name == listBox_mark_marks.SelectedItem.ToString())
+                //{
+                    textBox_mark_name.Text = m.name;
+                    dateTimePicker_mark.Text = m.date.ToString();
+                    textBox_mark_points.Text = m.points[0].ToString();
+                    textBox_mark_mpoints.Text = m.points[1].ToString();
+                    textBox_mark_note.Text = m.note;
+                //}
             }
         }
     }
