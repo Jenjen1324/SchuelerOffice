@@ -15,16 +15,21 @@ namespace SchülerOffice
             foreach (string s in Data.classes)
             {
                 TreeNode node = new TreeNode(s);
-                treeView_mark.Nodes.Add(s);
                 node.ToolTipText = s;
+                node.Tag = "Parent";
                 int i = 0;
                 foreach (Mark m in Data.marks)
                 {
                     if (m._class == s)
                     {
                         TreeNode n = new TreeNode(m.name);
+                        n.ToolTipText = m.date.ToString();
+                        n.Tag = i;
+                        node.Nodes.Add(n);
                     }
+                    i++;
                 }
+                treeView_mark.Nodes.Add(node);
             }
         }
 
@@ -75,7 +80,15 @@ namespace SchülerOffice
                 string _class;
                 try
                 {
-                    //_class = listBox_mark_classes.SelectedItem.ToString();
+                    if (treeView_mark.SelectedNode.Tag.ToString() != "Parent")
+                    {
+                        Data.messageBox("Warnung", "Kein Fach gewählt");
+                        return;
+                    }
+                    else
+                    {
+                        _class = treeView_mark.SelectedNode.Text;
+                    }
                 }
                 catch
                 {
@@ -87,8 +100,8 @@ namespace SchülerOffice
                 float _mark = Convert.ToSingle(textBox_mark_mark.Text);
                 float[] _points = new float[] {Convert.ToSingle(textBox_mark_points.Text), Convert.ToSingle(textBox_mark_mpoints.Text)};
                 string _note = textBox_mark_note.Text;
-                //Mark m = new Mark(_class,_name,_date,_mark,_points,_note);
-                //Data.marks.Add(m);
+                Mark m = new Mark(_class,_name,_date,_mark,_points,_note);
+                Data.marks.Add(m);
                 UpdateList();
             }
         }
