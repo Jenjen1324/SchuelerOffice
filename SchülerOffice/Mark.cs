@@ -13,8 +13,8 @@ namespace SchülerOffice
         public string _class;
         public string name;
         public DateTime date;
-        public Single mark;
-        public Single[] points;
+        public float mark;
+        public float[] points;
         public string note;
 
         public Mark(string _class, string name, DateTime date, Single mark, Single[] points, string note)
@@ -30,34 +30,62 @@ namespace SchülerOffice
         public string MarkToXml(Mark mark)
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("class", this._class);
+            data.Add("_class", this._class);
             data.Add("name", this.name);
             data.Add("date", this.date);
             data.Add("mark", this.mark);
-            data.Add("points", this.points);
             data.Add("note", this.note);
 
             StringBuilder xml = new StringBuilder();
-            xml.AppendLine(String.Format("<node name=\"{0}\">", "Mark")); // Add some type of name here
-            foreach (KeyValuePair<string,object> item in data)
+            xml.AppendLine("<mark>"); // Add some type of name here
+            foreach (KeyValuePair<string, object> item in data)
             {
                 xml.AppendLine(String.Format("<item key=\"{0}\">{1}</item>", item.Key, item.Value.ToString()));
             }
-            xml.AppendLine("</node>");
+            foreach (float f in points)
+            {
+                xml.AppendLine(String.Format("<point>{0}</point>", f));
+            }
+            xml.AppendLine("</mark>");
             return xml.ToString();
         }
 
-        public Mark XmlToMark(string file)
+        public List<Mark> XmlToMark(string file)
         {
             throw new NotImplementedException();
             FileStream xmlfs = new FileStream(file, FileMode.Open);
             XmlReader xmlr = XmlReader.Create(xmlfs);
 
+			List<Mark> loaded = new List<Mark>();
+			
             Mark current = null;
+            List<float> cpoints = new List<float>();
+
             while (xmlr.Read())
             {
                 // Need some work
+				if(xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.Element)
+				{
+					current = new Mark("","",DateTime.Now,0,new float[0],"");
+                    cpoints = new List<float>();
+				}
+				else if(xmlr.Name == "item" && xmlr.NodeType == XmlNodeType.Element)
+				{
+                    string nodekey = xmlr.GetAttribute("key");
+                    Type ptype = current.GetType().GetProperty(nodekey).GetType();
+                    current.GetType().GetProperty(nodekey).SetValue(current, Convert.ChangeType(xmlr.ReadElementContentAsString(), ptype), null);
+				}
+                else if (xmlr.Name == "point" && xmlr.NodeType == XmlNodeType.Element)
+                {
+                    cpoints.Add(Convert.ToSingle(xmlr.ReadContentAsString()));
+                }
+                else if (xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.EndElement)
+                {
+                    current.points = cpoints.ToArray();
+                    loaded.Add(current);
+                }
             }
+            return loaded;
         }
     }
 }
