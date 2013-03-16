@@ -63,7 +63,6 @@ namespace SchülerOffice
 
             while (xmlr.Read())
             {
-                // Need some work
 				if(xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.Element)
 				{
 					current = new Mark("","",DateTime.Now,0,new float[0],"");
