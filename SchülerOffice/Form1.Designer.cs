@@ -31,15 +31,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button_mark_deleteMark = new System.Windows.Forms.Button();
             this.button_mark_deleteClass = new System.Windows.Forms.Button();
             this.button_mark_addClass = new System.Windows.Forms.Button();
-            this.listBox_mark_marks = new System.Windows.Forms.ListBox();
-            this.label_mark_marks = new System.Windows.Forms.Label();
             this.groupBox_mark_newMark = new System.Windows.Forms.GroupBox();
-            this.monthCalendar_mark_date = new System.Windows.Forms.MonthCalendar();
             this.button_mark_calculateMark = new System.Windows.Forms.Button();
-            this.textBox_mark_date = new System.Windows.Forms.TextBox();
             this.label_mark_markDate = new System.Windows.Forms.Label();
             this.textBox_mark_note = new System.Windows.Forms.TextBox();
             this.label_mark_markNote = new System.Windows.Forms.Label();
@@ -52,9 +47,10 @@
             this.textBox_mark_mark = new System.Windows.Forms.TextBox();
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
-            this.listBox_mark_classes = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.treeView_mark = new System.Windows.Forms.TreeView();
+            this.dateTimePicker_mark = new System.Windows.Forms.DateTimePicker();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox_mark_newMark.SuspendLayout();
@@ -85,14 +81,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button_mark_deleteMark);
+            this.tabPage2.Controls.Add(this.treeView_mark);
             this.tabPage2.Controls.Add(this.button_mark_deleteClass);
             this.tabPage2.Controls.Add(this.button_mark_addClass);
-            this.tabPage2.Controls.Add(this.listBox_mark_marks);
-            this.tabPage2.Controls.Add(this.label_mark_marks);
             this.tabPage2.Controls.Add(this.groupBox_mark_newMark);
             this.tabPage2.Controls.Add(this.label_mark_classes);
-            this.tabPage2.Controls.Add(this.listBox_mark_classes);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -100,15 +93,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Noten";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // button_mark_deleteMark
-            // 
-            this.button_mark_deleteMark.Location = new System.Drawing.Point(555, 375);
-            this.button_mark_deleteMark.Name = "button_mark_deleteMark";
-            this.button_mark_deleteMark.Size = new System.Drawing.Size(180, 23);
-            this.button_mark_deleteMark.TabIndex = 8;
-            this.button_mark_deleteMark.Text = "Entfernen";
-            this.button_mark_deleteMark.UseVisualStyleBackColor = true;
             // 
             // button_mark_deleteClass
             // 
@@ -130,28 +114,10 @@
             this.button_mark_addClass.UseVisualStyleBackColor = true;
             this.button_mark_addClass.Click += new System.EventHandler(this.button_mark_addClass_Click);
             // 
-            // listBox_mark_marks
-            // 
-            this.listBox_mark_marks.FormattingEnabled = true;
-            this.listBox_mark_marks.Location = new System.Drawing.Point(555, 28);
-            this.listBox_mark_marks.Name = "listBox_mark_marks";
-            this.listBox_mark_marks.Size = new System.Drawing.Size(180, 342);
-            this.listBox_mark_marks.TabIndex = 5;
-            // 
-            // label_mark_marks
-            // 
-            this.label_mark_marks.AutoSize = true;
-            this.label_mark_marks.Location = new System.Drawing.Point(555, 12);
-            this.label_mark_marks.Name = "label_mark_marks";
-            this.label_mark_marks.Size = new System.Drawing.Size(36, 13);
-            this.label_mark_marks.TabIndex = 4;
-            this.label_mark_marks.Text = "Noten";
-            // 
             // groupBox_mark_newMark
             // 
-            this.groupBox_mark_newMark.Controls.Add(this.monthCalendar_mark_date);
+            this.groupBox_mark_newMark.Controls.Add(this.dateTimePicker_mark);
             this.groupBox_mark_newMark.Controls.Add(this.button_mark_calculateMark);
-            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_date);
             this.groupBox_mark_newMark.Controls.Add(this.label_mark_markDate);
             this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_note);
             this.groupBox_mark_newMark.Controls.Add(this.label_mark_markNote);
@@ -170,14 +136,6 @@
             this.groupBox_mark_newMark.TabStop = false;
             this.groupBox_mark_newMark.Text = "Neue Note";
             // 
-            // monthCalendar_mark_date
-            // 
-            this.monthCalendar_mark_date.Location = new System.Drawing.Point(177, 41);
-            this.monthCalendar_mark_date.Name = "monthCalendar_mark_date";
-            this.monthCalendar_mark_date.TabIndex = 13;
-            this.monthCalendar_mark_date.Visible = false;
-            this.monthCalendar_mark_date.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_mark_date_DateChanged);
-            // 
             // button_mark_calculateMark
             // 
             this.button_mark_calculateMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -188,14 +146,6 @@
             this.button_mark_calculateMark.Text = "Note Linear \r\nberechnen";
             this.button_mark_calculateMark.UseVisualStyleBackColor = true;
             this.button_mark_calculateMark.Click += new System.EventHandler(this.button_mark_calculateMark_Click);
-            // 
-            // textBox_mark_date
-            // 
-            this.textBox_mark_date.Location = new System.Drawing.Point(124, 41);
-            this.textBox_mark_date.Name = "textBox_mark_date";
-            this.textBox_mark_date.Size = new System.Drawing.Size(224, 20);
-            this.textBox_mark_date.TabIndex = 11;
-            this.textBox_mark_date.Click += new System.EventHandler(this.textBox_mark_date_Click);
             // 
             // label_mark_markDate
             // 
@@ -297,14 +247,6 @@
             this.label_mark_classes.TabIndex = 1;
             this.label_mark_classes.Text = "Fächer";
             // 
-            // listBox_mark_classes
-            // 
-            this.listBox_mark_classes.FormattingEnabled = true;
-            this.listBox_mark_classes.Location = new System.Drawing.Point(8, 28);
-            this.listBox_mark_classes.Name = "listBox_mark_classes";
-            this.listBox_mark_classes.Size = new System.Drawing.Size(180, 316);
-            this.listBox_mark_classes.TabIndex = 0;
-            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -323,6 +265,20 @@
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // treeView_mark
+            // 
+            this.treeView_mark.Location = new System.Drawing.Point(11, 28);
+            this.treeView_mark.Name = "treeView_mark";
+            this.treeView_mark.Size = new System.Drawing.Size(177, 312);
+            this.treeView_mark.TabIndex = 8;
+            // 
+            // dateTimePicker_mark
+            // 
+            this.dateTimePicker_mark.Location = new System.Drawing.Point(124, 42);
+            this.dateTimePicker_mark.Name = "dateTimePicker_mark";
+            this.dateTimePicker_mark.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_mark.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,16 +293,6 @@
             this.groupBox_mark_newMark.ResumeLayout(false);
             this.groupBox_mark_newMark.PerformLayout();
             this.ResumeLayout(false);
-            /*
-            this.label_mark_classes.Text = Data.lang.classes;
-            this.label_mark_marks.Text = Data.lang.marks;
-            this.label_mark_mark.Text = Data.lang.mark;
-            this.label_mark_markDate.Text = Data.lang.markDate;
-            this.label_mark_markName.Text = Data.lang.markName;
-            this.label_mark_markNote.Text = Data.lang.markNote;
-            this.label_mark_markPoints.Text = Data.lang.markPoints;
-            this.groupbox_mark_newMark.Text = Data.lang.newMark;
-             */
 
         }
 
@@ -356,7 +302,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label_mark_classes;
-        private System.Windows.Forms.ListBox listBox_mark_classes;
         private System.Windows.Forms.GroupBox groupBox_mark_newMark;
         private System.Windows.Forms.Button button_mark_add;
         private System.Windows.Forms.TextBox textBox_mark_mpoints;
@@ -364,8 +309,6 @@
         private System.Windows.Forms.Label label_mark_markPoints;
         private System.Windows.Forms.TextBox textBox_mark_mark;
         private System.Windows.Forms.Label label_mark_mark;
-        private System.Windows.Forms.ListBox listBox_mark_marks;
-        private System.Windows.Forms.Label label_mark_marks;
         private System.Windows.Forms.TextBox textBox_mark_note;
         private System.Windows.Forms.Label label_mark_markNote;
         private System.Windows.Forms.TextBox textBox_mark_name;
@@ -375,10 +318,9 @@
         private System.Windows.Forms.Button button_mark_deleteClass;
         private System.Windows.Forms.Button button_mark_addClass;
         private System.Windows.Forms.Button button_mark_calculateMark;
-        private System.Windows.Forms.TextBox textBox_mark_date;
         private System.Windows.Forms.Label label_mark_markDate;
-        private System.Windows.Forms.Button button_mark_deleteMark;
-        private System.Windows.Forms.MonthCalendar monthCalendar_mark_date;
+        private System.Windows.Forms.TreeView treeView_mark;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_mark;
     }
 }
 
