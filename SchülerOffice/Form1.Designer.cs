@@ -31,31 +31,33 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button_mark_deleteMark = new System.Windows.Forms.Button();
+            this.button_mark_deleteClass = new System.Windows.Forms.Button();
+            this.button_mark_addClass = new System.Windows.Forms.Button();
+            this.listBox_mark_marks = new System.Windows.Forms.ListBox();
+            this.label_mark_marks = new System.Windows.Forms.Label();
+            this.groupBox_mark_newMark = new System.Windows.Forms.GroupBox();
+            this.monthCalendar_mark_date = new System.Windows.Forms.MonthCalendar();
+            this.button_mark_calculateMark = new System.Windows.Forms.Button();
+            this.textBox_mark_date = new System.Windows.Forms.TextBox();
+            this.label_mark_markDate = new System.Windows.Forms.Label();
+            this.textBox_mark_note = new System.Windows.Forms.TextBox();
+            this.label_mark_markNote = new System.Windows.Forms.Label();
+            this.textBox_mark_name = new System.Windows.Forms.TextBox();
+            this.label_mark_markName = new System.Windows.Forms.Label();
+            this.button_mark_add = new System.Windows.Forms.Button();
+            this.textBox_mark_mpoints = new System.Windows.Forms.TextBox();
+            this.textBox_mark_points = new System.Windows.Forms.TextBox();
+            this.label_mark_markPoints = new System.Windows.Forms.Label();
+            this.textBox_mark_mark = new System.Windows.Forms.TextBox();
+            this.label_mark_mark = new System.Windows.Forms.Label();
+            this.label_mark_classes = new System.Windows.Forms.Label();
+            this.listBox_mark_classes = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBox_mark_newMark.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -68,7 +70,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(872, 570);
+            this.tabControl1.Size = new System.Drawing.Size(749, 431);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -76,170 +78,238 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(864, 544);
+            this.tabPage1.Size = new System.Drawing.Size(741, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.listBox2);
-            this.tabPage2.Controls.Add(this.label6);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.listBox1);
+            this.tabPage2.Controls.Add(this.button_mark_deleteMark);
+            this.tabPage2.Controls.Add(this.button_mark_deleteClass);
+            this.tabPage2.Controls.Add(this.button_mark_addClass);
+            this.tabPage2.Controls.Add(this.listBox_mark_marks);
+            this.tabPage2.Controls.Add(this.label_mark_marks);
+            this.tabPage2.Controls.Add(this.groupBox_mark_newMark);
+            this.tabPage2.Controls.Add(this.label_mark_classes);
+            this.tabPage2.Controls.Add(this.listBox_mark_classes);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(864, 544);
+            this.tabPage2.Size = new System.Drawing.Size(741, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Noten";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // listBox2
+            // button_mark_deleteMark
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(676, 28);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(180, 251);
-            this.listBox2.TabIndex = 5;
+            this.button_mark_deleteMark.Location = new System.Drawing.Point(555, 375);
+            this.button_mark_deleteMark.Name = "button_mark_deleteMark";
+            this.button_mark_deleteMark.Size = new System.Drawing.Size(180, 23);
+            this.button_mark_deleteMark.TabIndex = 8;
+            this.button_mark_deleteMark.Text = "Entfernen";
+            this.button_mark_deleteMark.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // button_mark_deleteClass
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(673, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Noten";
+            this.button_mark_deleteClass.Location = new System.Drawing.Point(8, 375);
+            this.button_mark_deleteClass.Name = "button_mark_deleteClass";
+            this.button_mark_deleteClass.Size = new System.Drawing.Size(180, 23);
+            this.button_mark_deleteClass.TabIndex = 7;
+            this.button_mark_deleteClass.Text = "Entfernen";
+            this.button_mark_deleteClass.UseVisualStyleBackColor = true;
+            this.button_mark_deleteClass.Click += new System.EventHandler(this.button_mark_deleteClass_Click);
             // 
-            // groupBox1
+            // button_mark_addClass
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(194, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(355, 386);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Neue Note";
+            this.button_mark_addClass.Location = new System.Drawing.Point(8, 346);
+            this.button_mark_addClass.Name = "button_mark_addClass";
+            this.button_mark_addClass.Size = new System.Drawing.Size(180, 23);
+            this.button_mark_addClass.TabIndex = 6;
+            this.button_mark_addClass.Text = "Hinzufügen";
+            this.button_mark_addClass.UseVisualStyleBackColor = true;
+            this.button_mark_addClass.Click += new System.EventHandler(this.button_mark_addClass_Click);
             // 
-            // textBox5
+            // listBox_mark_marks
             // 
-            this.textBox5.Location = new System.Drawing.Point(6, 213);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(339, 167);
-            this.textBox5.TabIndex = 9;
+            this.listBox_mark_marks.FormattingEnabled = true;
+            this.listBox_mark_marks.Location = new System.Drawing.Point(555, 28);
+            this.listBox_mark_marks.Name = "listBox_mark_marks";
+            this.listBox_mark_marks.Size = new System.Drawing.Size(180, 342);
+            this.listBox_mark_marks.TabIndex = 5;
             // 
-            // label5
+            // label_mark_marks
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 197);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Bemerkung:";
+            this.label_mark_marks.AutoSize = true;
+            this.label_mark_marks.Location = new System.Drawing.Point(555, 12);
+            this.label_mark_marks.Name = "label_mark_marks";
+            this.label_mark_marks.Size = new System.Drawing.Size(36, 13);
+            this.label_mark_marks.TabIndex = 4;
+            this.label_mark_marks.Text = "Noten";
             // 
-            // textBox4
+            // groupBox_mark_newMark
             // 
-            this.textBox4.Location = new System.Drawing.Point(124, 16);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(224, 20);
-            this.textBox4.TabIndex = 7;
+            this.groupBox_mark_newMark.Controls.Add(this.monthCalendar_mark_date);
+            this.groupBox_mark_newMark.Controls.Add(this.button_mark_calculateMark);
+            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_date);
+            this.groupBox_mark_newMark.Controls.Add(this.label_mark_markDate);
+            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_note);
+            this.groupBox_mark_newMark.Controls.Add(this.label_mark_markNote);
+            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_name);
+            this.groupBox_mark_newMark.Controls.Add(this.label_mark_markName);
+            this.groupBox_mark_newMark.Controls.Add(this.button_mark_add);
+            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_mpoints);
+            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_points);
+            this.groupBox_mark_newMark.Controls.Add(this.label_mark_markPoints);
+            this.groupBox_mark_newMark.Controls.Add(this.textBox_mark_mark);
+            this.groupBox_mark_newMark.Controls.Add(this.label_mark_mark);
+            this.groupBox_mark_newMark.Location = new System.Drawing.Point(194, 12);
+            this.groupBox_mark_newMark.Name = "groupBox_mark_newMark";
+            this.groupBox_mark_newMark.Size = new System.Drawing.Size(355, 386);
+            this.groupBox_mark_newMark.TabIndex = 2;
+            this.groupBox_mark_newMark.TabStop = false;
+            this.groupBox_mark_newMark.Text = "Neue Note";
             // 
-            // label4
+            // monthCalendar_mark_date
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Name:";
+            this.monthCalendar_mark_date.Location = new System.Drawing.Point(177, 41);
+            this.monthCalendar_mark_date.Name = "monthCalendar_mark_date";
+            this.monthCalendar_mark_date.TabIndex = 13;
+            this.monthCalendar_mark_date.Visible = false;
+            this.monthCalendar_mark_date.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_mark_date_DateChanged);
             // 
-            // button1
+            // button_mark_calculateMark
             // 
-            this.button1.Location = new System.Drawing.Point(270, 184);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Hinzufügen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_mark_calculateMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_mark_calculateMark.Location = new System.Drawing.Point(270, 91);
+            this.button_mark_calculateMark.Name = "button_mark_calculateMark";
+            this.button_mark_calculateMark.Size = new System.Drawing.Size(75, 23);
+            this.button_mark_calculateMark.TabIndex = 12;
+            this.button_mark_calculateMark.Text = "Note Linear \r\nberechnen";
+            this.button_mark_calculateMark.UseVisualStyleBackColor = true;
+            this.button_mark_calculateMark.Click += new System.EventHandler(this.button_mark_calculateMark_Click);
             // 
-            // textBox3
+            // textBox_mark_date
             // 
-            this.textBox3.Location = new System.Drawing.Point(210, 93);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(50, 20);
-            this.textBox3.TabIndex = 4;
+            this.textBox_mark_date.Location = new System.Drawing.Point(124, 41);
+            this.textBox_mark_date.Name = "textBox_mark_date";
+            this.textBox_mark_date.Size = new System.Drawing.Size(224, 20);
+            this.textBox_mark_date.TabIndex = 11;
+            this.textBox_mark_date.Click += new System.EventHandler(this.textBox_mark_date_Click);
             // 
-            // textBox2
+            // label_mark_markDate
             // 
-            this.textBox2.Location = new System.Drawing.Point(154, 93);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(50, 20);
-            this.textBox2.TabIndex = 3;
+            this.label_mark_markDate.AutoSize = true;
+            this.label_mark_markDate.Location = new System.Drawing.Point(6, 44);
+            this.label_mark_markDate.Name = "label_mark_markDate";
+            this.label_mark_markDate.Size = new System.Drawing.Size(41, 13);
+            this.label_mark_markDate.TabIndex = 10;
+            this.label_mark_markDate.Text = "Datum:";
             // 
-            // label3
+            // textBox_mark_note
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Punkte / Punktemaximum:";
+            this.textBox_mark_note.Location = new System.Drawing.Point(6, 213);
+            this.textBox_mark_note.Multiline = true;
+            this.textBox_mark_note.Name = "textBox_mark_note";
+            this.textBox_mark_note.Size = new System.Drawing.Size(339, 167);
+            this.textBox_mark_note.TabIndex = 9;
             // 
-            // textBox1
+            // label_mark_markNote
             // 
-            this.textBox1.Location = new System.Drawing.Point(154, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(50, 20);
-            this.textBox1.TabIndex = 1;
+            this.label_mark_markNote.AutoSize = true;
+            this.label_mark_markNote.Location = new System.Drawing.Point(3, 197);
+            this.label_mark_markNote.Name = "label_mark_markNote";
+            this.label_mark_markNote.Size = new System.Drawing.Size(64, 13);
+            this.label_mark_markNote.TabIndex = 8;
+            this.label_mark_markNote.Text = "Bemerkung:";
             // 
-            // label2
+            // textBox_mark_name
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 70);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Note:";
+            this.textBox_mark_name.Location = new System.Drawing.Point(124, 16);
+            this.textBox_mark_name.Name = "textBox_mark_name";
+            this.textBox_mark_name.Size = new System.Drawing.Size(224, 20);
+            this.textBox_mark_name.TabIndex = 7;
             // 
-            // label1
+            // label_mark_markName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Fächer";
+            this.label_mark_markName.AutoSize = true;
+            this.label_mark_markName.Location = new System.Drawing.Point(6, 19);
+            this.label_mark_markName.Name = "label_mark_markName";
+            this.label_mark_markName.Size = new System.Drawing.Size(38, 13);
+            this.label_mark_markName.TabIndex = 6;
+            this.label_mark_markName.Text = "Name:";
             // 
-            // listBox1
+            // button_mark_add
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(8, 38);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(180, 238);
-            this.listBox1.TabIndex = 0;
+            this.button_mark_add.Location = new System.Drawing.Point(270, 184);
+            this.button_mark_add.Name = "button_mark_add";
+            this.button_mark_add.Size = new System.Drawing.Size(75, 23);
+            this.button_mark_add.TabIndex = 5;
+            this.button_mark_add.Text = "Hinzufügen";
+            this.button_mark_add.UseVisualStyleBackColor = true;
+            this.button_mark_add.Click += new System.EventHandler(this.button_mark_add_Click);
+            // 
+            // textBox_mark_mpoints
+            // 
+            this.textBox_mark_mpoints.Location = new System.Drawing.Point(210, 93);
+            this.textBox_mark_mpoints.Name = "textBox_mark_mpoints";
+            this.textBox_mark_mpoints.Size = new System.Drawing.Size(50, 20);
+            this.textBox_mark_mpoints.TabIndex = 4;
+            // 
+            // textBox_mark_points
+            // 
+            this.textBox_mark_points.Location = new System.Drawing.Point(154, 93);
+            this.textBox_mark_points.Name = "textBox_mark_points";
+            this.textBox_mark_points.Size = new System.Drawing.Size(50, 20);
+            this.textBox_mark_points.TabIndex = 3;
+            // 
+            // label_mark_markPoints
+            // 
+            this.label_mark_markPoints.AutoSize = true;
+            this.label_mark_markPoints.Location = new System.Drawing.Point(6, 96);
+            this.label_mark_markPoints.Name = "label_mark_markPoints";
+            this.label_mark_markPoints.Size = new System.Drawing.Size(132, 13);
+            this.label_mark_markPoints.TabIndex = 2;
+            this.label_mark_markPoints.Text = "Punkte / Punktemaximum:";
+            // 
+            // textBox_mark_mark
+            // 
+            this.textBox_mark_mark.Location = new System.Drawing.Point(154, 67);
+            this.textBox_mark_mark.Name = "textBox_mark_mark";
+            this.textBox_mark_mark.Size = new System.Drawing.Size(50, 20);
+            this.textBox_mark_mark.TabIndex = 1;
+            // 
+            // label_mark_mark
+            // 
+            this.label_mark_mark.AutoSize = true;
+            this.label_mark_mark.Location = new System.Drawing.Point(6, 70);
+            this.label_mark_mark.Name = "label_mark_mark";
+            this.label_mark_mark.Size = new System.Drawing.Size(33, 13);
+            this.label_mark_mark.TabIndex = 0;
+            this.label_mark_mark.Text = "Note:";
+            // 
+            // label_mark_classes
+            // 
+            this.label_mark_classes.AutoSize = true;
+            this.label_mark_classes.Location = new System.Drawing.Point(8, 12);
+            this.label_mark_classes.Name = "label_mark_classes";
+            this.label_mark_classes.Size = new System.Drawing.Size(40, 13);
+            this.label_mark_classes.TabIndex = 1;
+            this.label_mark_classes.Text = "Fächer";
+            // 
+            // listBox_mark_classes
+            // 
+            this.listBox_mark_classes.FormattingEnabled = true;
+            this.listBox_mark_classes.Location = new System.Drawing.Point(8, 28);
+            this.listBox_mark_classes.Name = "listBox_mark_classes";
+            this.listBox_mark_classes.Size = new System.Drawing.Size(180, 316);
+            this.listBox_mark_classes.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(864, 544);
+            this.tabPage3.Size = new System.Drawing.Size(741, 405);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -248,68 +318,35 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(864, 544);
+            this.tabPage4.Size = new System.Drawing.Size(741, 405);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(8, 282);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Hinzufügen";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(113, 282);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Entfernen";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 44);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Datum:";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(124, 41);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(224, 20);
-            this.textBox6.TabIndex = 11;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(270, 91);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Note Linear \r\nberechnen";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 570);
+            this.ClientSize = new System.Drawing.Size(749, 431);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBox_mark_newMark.ResumeLayout(false);
+            this.groupBox_mark_newMark.PerformLayout();
             this.ResumeLayout(false);
+            /*
+            this.label_mark_classes.Text = Data.lang.classes;
+            this.label_mark_marks.Text = Data.lang.marks;
+            this.label_mark_mark.Text = Data.lang.mark;
+            this.label_mark_markDate.Text = Data.lang.markDate;
+            this.label_mark_markName.Text = Data.lang.markName;
+            this.label_mark_markNote.Text = Data.lang.markNote;
+            this.label_mark_markPoints.Text = Data.lang.markPoints;
+            this.groupbox_mark_newMark.Text = Data.lang.newMark;
+             */
 
         }
 
@@ -318,28 +355,30 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label_mark_classes;
+        private System.Windows.Forms.ListBox listBox_mark_classes;
+        private System.Windows.Forms.GroupBox groupBox_mark_newMark;
+        private System.Windows.Forms.Button button_mark_add;
+        private System.Windows.Forms.TextBox textBox_mark_mpoints;
+        private System.Windows.Forms.TextBox textBox_mark_points;
+        private System.Windows.Forms.Label label_mark_markPoints;
+        private System.Windows.Forms.TextBox textBox_mark_mark;
+        private System.Windows.Forms.Label label_mark_mark;
+        private System.Windows.Forms.ListBox listBox_mark_marks;
+        private System.Windows.Forms.Label label_mark_marks;
+        private System.Windows.Forms.TextBox textBox_mark_note;
+        private System.Windows.Forms.Label label_mark_markNote;
+        private System.Windows.Forms.TextBox textBox_mark_name;
+        private System.Windows.Forms.Label label_mark_markName;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button_mark_deleteClass;
+        private System.Windows.Forms.Button button_mark_addClass;
+        private System.Windows.Forms.Button button_mark_calculateMark;
+        private System.Windows.Forms.TextBox textBox_mark_date;
+        private System.Windows.Forms.Label label_mark_markDate;
+        private System.Windows.Forms.Button button_mark_deleteMark;
+        private System.Windows.Forms.MonthCalendar monthCalendar_mark_date;
     }
 }
 
