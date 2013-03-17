@@ -15,6 +15,7 @@ namespace SchülerOffice
         public Form1()
         {
             InitializeComponent();
+            UpdateList();
         }
 
 
