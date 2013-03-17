@@ -66,6 +66,36 @@ namespace SchülerOffice
 
         private void button_mark_deleteClass_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (treeView_mark.SelectedNode.Tag.ToString() == "Parent")
+                {
+                    if (MessageBox.Show(String.Format("Bist du dir sicher dass du das Fach {0} löschen willst?", treeView_mark.SelectedNode.Text), "Warnung", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        foreach (Mark m in Data.marks)
+                        {
+                            if (m._class == treeView_mark.SelectedNode.ToString())
+                            {
+                                Data.marks.Remove(m);
+                            }
+                        }
+                        Data.classes.Remove(treeView_mark.SelectedNode.ToString());
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show(String.Format("Bist du dir sicher dass du die Note {0} löschen willst?", treeView_mark.SelectedNode.Text), "Warnung", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Mark m = Data.marks[Convert.ToInt32(treeView_mark.SelectedNode.Tag)];
+                        Data.marks.Remove(m);
+                    }
+                }
+                UpdateList();
+            }
+            catch
+            {
+                
+            }
             // Needs work
         }
 
@@ -113,6 +143,7 @@ namespace SchülerOffice
                 Mark m = Data.marks[(int)treeView_mark.SelectedNode.Tag];
                 textBox_mark_name.Text = m.name;
                 dateTimePicker_mark.Text = m.date.ToString();
+                textBox_mark_mark.Text = m.mark.ToString();
                 textBox_mark_points.Text = m.points[0].ToString();
                 textBox_mark_mpoints.Text = m.points[1].ToString();
                 textBox_mark_note.Text = m.note;
