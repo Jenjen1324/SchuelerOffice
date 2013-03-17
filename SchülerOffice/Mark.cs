@@ -10,12 +10,12 @@ namespace SchülerOffice
 {
     public class Mark
     {
-        public string _class;
-        public string name;
-        public DateTime date;
-        public Single mark;
-        public Single[] points;
-        public string note;
+        public string _class { get; set; }
+        public string name { get; set; }
+        public DateTime date { get; set; }
+        public Single mark { get; set; }
+        public Single[] points { get; set; }
+        public string note { get; set; }
 
         public Mark(string _class, string name, DateTime date, Single mark, Single[] points, string note)
         {
@@ -37,16 +37,16 @@ namespace SchülerOffice
             data.Add("note", mark.note);
 
             StringBuilder xml = new StringBuilder();
-            xml.AppendLine("<mark>"); // Add some type of name here
+            xml.AppendLine(" <mark>");
             foreach (KeyValuePair<string, object> item in data)
             {
-                xml.AppendLine(String.Format("<item key=\"{0}\">{1}</item>", item.Key, item.Value.ToString()));
+                xml.AppendLine(String.Format("  <item key=\"{0}\">{1}</item>", item.Key, item.Value.ToString()));
             }
             foreach (float f in mark.points)
             {
-                xml.AppendLine(String.Format("<point>{0}</point>", f));
+                xml.AppendLine(String.Format("  <point>{0}</point>", f));
             }
-            xml.AppendLine("</mark>");
+            xml.AppendLine(" </mark>");
             return xml.ToString();
         }
 
@@ -70,12 +70,13 @@ namespace SchülerOffice
 				else if(xmlr.Name == "item" && xmlr.NodeType == XmlNodeType.Element)
 				{
                     string nodekey = xmlr.GetAttribute("key");
-                    Type ptype = current.GetType().GetProperty(nodekey).GetType();
+                    var properties = current.GetType().GetProperties();
+                    Type ptype = current.GetType().GetProperty(nodekey).PropertyType;
                     current.GetType().GetProperty(nodekey).SetValue(current, Convert.ChangeType(xmlr.ReadElementContentAsString(), ptype), null);
 				}
                 else if (xmlr.Name == "point" && xmlr.NodeType == XmlNodeType.Element)
                 {
-                    cpoints.Add(Convert.ToSingle(xmlr.ReadContentAsString()));
+                    cpoints.Add(Convert.ToSingle(xmlr.ReadElementContentAsString()));
                 }
                 else if (xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.EndElement)
                 {
