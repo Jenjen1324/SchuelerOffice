@@ -161,6 +161,7 @@ namespace SchülerOffice
 
         private void treeView_mark_AfterNodeDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+
             // Do something fancy here
         }
 

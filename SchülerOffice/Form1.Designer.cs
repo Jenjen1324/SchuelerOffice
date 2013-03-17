@@ -35,6 +35,9 @@
             this.button_mark_deleteClass = new System.Windows.Forms.Button();
             this.button_mark_addClass = new System.Windows.Forms.Button();
             this.groupBox_mark_newMark = new System.Windows.Forms.GroupBox();
+            this.button_mark_clear = new System.Windows.Forms.Button();
+            this.comboBox_mark_classes = new System.Windows.Forms.ComboBox();
+            this.label_mark_class = new System.Windows.Forms.Label();
             this.dateTimePicker_mark = new System.Windows.Forms.DateTimePicker();
             this.button_mark_calculateMark = new System.Windows.Forms.Button();
             this.label_mark_markDate = new System.Windows.Forms.Label();
@@ -51,9 +54,7 @@
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label_mark_class = new System.Windows.Forms.Label();
-            this.comboBox_mark_classes = new System.Windows.Forms.ComboBox();
-            this.button_mark_clear = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox_mark_newMark.SuspendLayout();
@@ -129,6 +130,7 @@
             // 
             // groupBox_mark_newMark
             // 
+            this.groupBox_mark_newMark.Controls.Add(this.comboBox1);
             this.groupBox_mark_newMark.Controls.Add(this.button_mark_clear);
             this.groupBox_mark_newMark.Controls.Add(this.comboBox_mark_classes);
             this.groupBox_mark_newMark.Controls.Add(this.label_mark_class);
@@ -152,6 +154,32 @@
             this.groupBox_mark_newMark.TabStop = false;
             this.groupBox_mark_newMark.Text = "Neue Note";
             // 
+            // button_mark_clear
+            // 
+            this.button_mark_clear.Location = new System.Drawing.Point(181, 184);
+            this.button_mark_clear.Name = "button_mark_clear";
+            this.button_mark_clear.Size = new System.Drawing.Size(83, 23);
+            this.button_mark_clear.TabIndex = 15;
+            this.button_mark_clear.Text = "Zurücksetzen";
+            this.button_mark_clear.UseVisualStyleBackColor = true;
+            this.button_mark_clear.Click += new System.EventHandler(this.button_mark_clear_Click);
+            // 
+            // comboBox_mark_classes
+            // 
+            this.comboBox_mark_classes.Location = new System.Drawing.Point(124, 119);
+            this.comboBox_mark_classes.Name = "comboBox_mark_classes";
+            this.comboBox_mark_classes.Size = new System.Drawing.Size(136, 21);
+            this.comboBox_mark_classes.TabIndex = 14;
+            // 
+            // label_mark_class
+            // 
+            this.label_mark_class.AutoSize = true;
+            this.label_mark_class.Location = new System.Drawing.Point(6, 122);
+            this.label_mark_class.Name = "label_mark_class";
+            this.label_mark_class.Size = new System.Drawing.Size(31, 13);
+            this.label_mark_class.TabIndex = 13;
+            this.label_mark_class.Text = "Fach";
+            // 
             // dateTimePicker_mark
             // 
             this.dateTimePicker_mark.Location = new System.Drawing.Point(124, 42);
@@ -162,9 +190,9 @@
             // button_mark_calculateMark
             // 
             this.button_mark_calculateMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_mark_calculateMark.Location = new System.Drawing.Point(210, 64);
+            this.button_mark_calculateMark.Location = new System.Drawing.Point(270, 64);
             this.button_mark_calculateMark.Name = "button_mark_calculateMark";
-            this.button_mark_calculateMark.Size = new System.Drawing.Size(135, 23);
+            this.button_mark_calculateMark.Size = new System.Drawing.Size(75, 49);
             this.button_mark_calculateMark.TabIndex = 12;
             this.button_mark_calculateMark.Text = "Note Linear berechnen";
             this.button_mark_calculateMark.UseVisualStyleBackColor = true;
@@ -288,31 +316,21 @@
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label_mark_class
+            // comboBox1
             // 
-            this.label_mark_class.AutoSize = true;
-            this.label_mark_class.Location = new System.Drawing.Point(6, 122);
-            this.label_mark_class.Name = "label_mark_class";
-            this.label_mark_class.Size = new System.Drawing.Size(31, 13);
-            this.label_mark_class.TabIndex = 13;
-            this.label_mark_class.Text = "Fach";
-            // 
-            // comboBox_mark_classes
-            // 
-            this.comboBox_mark_classes.Location = new System.Drawing.Point(124, 119);
-            this.comboBox_mark_classes.Name = "comboBox_mark_classes";
-            this.comboBox_mark_classes.Size = new System.Drawing.Size(136, 21);
-            this.comboBox_mark_classes.TabIndex = 14;
-            // 
-            // button_mark_clear
-            // 
-            this.button_mark_clear.Location = new System.Drawing.Point(181, 184);
-            this.button_mark_clear.Name = "button_mark_clear";
-            this.button_mark_clear.Size = new System.Drawing.Size(83, 23);
-            this.button_mark_clear.TabIndex = 15;
-            this.button_mark_clear.Text = "Zurücksetzen";
-            this.button_mark_clear.UseVisualStyleBackColor = true;
-            this.button_mark_clear.Click += new System.EventHandler(this.button_mark_clear_Click);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "0.25x",
+            "0.5x",
+            "1x",
+            "2x",
+            "3x",
+            "4x"});
+            this.comboBox1.Location = new System.Drawing.Point(210, 67);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(50, 21);
+            this.comboBox1.TabIndex = 16;
+            this.comboBox1.Text = "1x";
             // 
             // Form1
             // 
@@ -359,6 +377,7 @@
         private System.Windows.Forms.ComboBox comboBox_mark_classes;
         private System.Windows.Forms.Label label_mark_class;
         private System.Windows.Forms.Button button_mark_clear;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
