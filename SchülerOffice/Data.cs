@@ -25,15 +25,28 @@ namespace SchülerOffice
         internal static void LoadMarks()
         {
             Data.marks = Mark.XmlToMark(Data.markFile);
+            foreach(Mark m in Data.marks)
+            {
+                if(!Data.classes.Contains(m._class))
+                {
+                    Data.classes.Add(m._class);
+                }
+            }
         }
 
         internal static void SaveMarks()
         {
             StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<marks>");
             foreach (Mark m in marks)
             {
                 sb.AppendLine(Mark.MarkToXml(m));
             }
+            if(!sb.ToString().Contains('<'))
+            {
+                sb.AppendLine("<empty></empty>");
+            }
+            sb.AppendLine("</marks>");
             File.WriteAllText(Data.markFile, sb.ToString());
         }
 
