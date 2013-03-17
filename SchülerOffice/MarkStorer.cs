@@ -12,6 +12,7 @@ namespace SchülerOffice
         private void UpdateList()
         {
             treeView_mark.Nodes.Clear();
+            comboBox_mark_classes.Items.Clear();
             foreach (string s in Data.classes)
             {
                 comboBox_mark_classes.Items.Add(s);
@@ -75,12 +76,12 @@ namespace SchülerOffice
                     {
                         foreach (Mark m in Data.marks)
                         {
-                            if (m._class == treeView_mark.SelectedNode.ToString())
+                            if (m._class == treeView_mark.SelectedNode.Text.ToString())
                             {
                                 Data.marks.Remove(m);
                             }
                         }
-                        Data.classes.Remove(treeView_mark.SelectedNode.ToString());
+                        Data.classes.Remove(treeView_mark.SelectedNode.Text.ToString());
                     }
                 }
                 else
@@ -170,6 +171,7 @@ namespace SchülerOffice
             textBox_mark_name.Text = "";
             textBox_mark_note.Text = "";
             textBox_mark_points.Text = "";
+            comboBox_mark_classes.Text = "";
         }
     }
 }
