@@ -31,9 +31,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.treeView_mark = new System.Windows.Forms.TreeView();
             this.button_mark_deleteClass = new System.Windows.Forms.Button();
             this.button_mark_addClass = new System.Windows.Forms.Button();
             this.groupBox_mark_newMark = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker_mark = new System.Windows.Forms.DateTimePicker();
             this.button_mark_calculateMark = new System.Windows.Forms.Button();
             this.label_mark_markDate = new System.Windows.Forms.Label();
             this.textBox_mark_note = new System.Windows.Forms.TextBox();
@@ -49,8 +51,9 @@
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.treeView_mark = new System.Windows.Forms.TreeView();
-            this.dateTimePicker_mark = new System.Windows.Forms.DateTimePicker();
+            this.label_mark_class = new System.Windows.Forms.Label();
+            this.comboBox_mark_classes = new System.Windows.Forms.ComboBox();
+            this.button_mark_clear = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox_mark_newMark.SuspendLayout();
@@ -74,7 +77,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(741, 405);
+            this.tabPage1.Size = new System.Drawing.Size(780, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -93,6 +96,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Noten";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // treeView_mark
+            // 
+            this.treeView_mark.Location = new System.Drawing.Point(11, 28);
+            this.treeView_mark.Name = "treeView_mark";
+            this.treeView_mark.ShowNodeToolTips = true;
+            this.treeView_mark.Size = new System.Drawing.Size(177, 312);
+            this.treeView_mark.TabIndex = 8;
+            this.treeView_mark.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_mark_AfterSelect);
+            this.treeView_mark.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_mark_AfterNodeDoubleClick);
             // 
             // button_mark_deleteClass
             // 
@@ -116,6 +129,9 @@
             // 
             // groupBox_mark_newMark
             // 
+            this.groupBox_mark_newMark.Controls.Add(this.button_mark_clear);
+            this.groupBox_mark_newMark.Controls.Add(this.comboBox_mark_classes);
+            this.groupBox_mark_newMark.Controls.Add(this.label_mark_class);
             this.groupBox_mark_newMark.Controls.Add(this.dateTimePicker_mark);
             this.groupBox_mark_newMark.Controls.Add(this.button_mark_calculateMark);
             this.groupBox_mark_newMark.Controls.Add(this.label_mark_markDate);
@@ -135,6 +151,13 @@
             this.groupBox_mark_newMark.TabIndex = 2;
             this.groupBox_mark_newMark.TabStop = false;
             this.groupBox_mark_newMark.Text = "Neue Note";
+            // 
+            // dateTimePicker_mark
+            // 
+            this.dateTimePicker_mark.Location = new System.Drawing.Point(124, 42);
+            this.dateTimePicker_mark.Name = "dateTimePicker_mark";
+            this.dateTimePicker_mark.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_mark.TabIndex = 9;
             // 
             // button_mark_calculateMark
             // 
@@ -251,7 +274,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(741, 405);
+            this.tabPage3.Size = new System.Drawing.Size(780, 405);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -260,25 +283,36 @@
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(741, 405);
+            this.tabPage4.Size = new System.Drawing.Size(780, 405);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // treeView_mark
+            // label_mark_class
             // 
-            this.treeView_mark.Location = new System.Drawing.Point(11, 28);
-            this.treeView_mark.Name = "treeView_mark";
-            this.treeView_mark.Size = new System.Drawing.Size(177, 312);
-            this.treeView_mark.TabIndex = 8;
-            this.treeView_mark.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_mark_AfterSelect);
+            this.label_mark_class.AutoSize = true;
+            this.label_mark_class.Location = new System.Drawing.Point(6, 122);
+            this.label_mark_class.Name = "label_mark_class";
+            this.label_mark_class.Size = new System.Drawing.Size(31, 13);
+            this.label_mark_class.TabIndex = 13;
+            this.label_mark_class.Text = "Fach";
             // 
-            // dateTimePicker_mark
+            // comboBox_mark_classes
             // 
-            this.dateTimePicker_mark.Location = new System.Drawing.Point(124, 42);
-            this.dateTimePicker_mark.Name = "dateTimePicker_mark";
-            this.dateTimePicker_mark.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker_mark.TabIndex = 9;
+            this.comboBox_mark_classes.Location = new System.Drawing.Point(124, 119);
+            this.comboBox_mark_classes.Name = "comboBox_mark_classes";
+            this.comboBox_mark_classes.Size = new System.Drawing.Size(136, 21);
+            this.comboBox_mark_classes.TabIndex = 14;
+            // 
+            // button_mark_clear
+            // 
+            this.button_mark_clear.Location = new System.Drawing.Point(181, 184);
+            this.button_mark_clear.Name = "button_mark_clear";
+            this.button_mark_clear.Size = new System.Drawing.Size(83, 23);
+            this.button_mark_clear.TabIndex = 15;
+            this.button_mark_clear.Text = "Zurücksetzen";
+            this.button_mark_clear.UseVisualStyleBackColor = true;
+            this.button_mark_clear.Click += new System.EventHandler(this.button_mark_clear_Click);
             // 
             // Form1
             // 
@@ -322,6 +356,9 @@
         private System.Windows.Forms.Label label_mark_markDate;
         private System.Windows.Forms.TreeView treeView_mark;
         private System.Windows.Forms.DateTimePicker dateTimePicker_mark;
+        private System.Windows.Forms.ComboBox comboBox_mark_classes;
+        private System.Windows.Forms.Label label_mark_class;
+        private System.Windows.Forms.Button button_mark_clear;
     }
 }
 

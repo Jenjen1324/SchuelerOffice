@@ -14,6 +14,7 @@ namespace SchülerOffice
             treeView_mark.Nodes.Clear();
             foreach (string s in Data.classes)
             {
+                comboBox_mark_classes.Items.Add(s);
                 TreeNode node = new TreeNode(s);
                 node.ToolTipText = s;
                 node.Tag = "Parent";
@@ -23,7 +24,7 @@ namespace SchülerOffice
                     if (m._class == s)
                     {
                         TreeNode n = new TreeNode(m.name);
-                        n.ToolTipText = m.date.ToString();
+                        n.ToolTipText = m.mark.ToString();
                         n.Tag = i;
                         node.Nodes.Add(n);
                     }
@@ -99,6 +100,9 @@ namespace SchülerOffice
             // Needs work
         }
 
+        /// <summary>
+        /// Happens when you click the "Add mark" button
+        /// </summary>
         private void button_mark_add_Click(object sender, EventArgs e)
         {
             if (textBox_mark_mark.Text == "")
@@ -110,14 +114,14 @@ namespace SchülerOffice
                 string _class;
                 try
                 {
-                    if (treeView_mark.SelectedNode.Tag.ToString() != "Parent")
+                    if (comboBox_mark_classes.Text == "")
                     {
                         Data.messageBox("Warnung", "Kein Fach gewählt");
                         return;
                     }
                     else
                     {
-                        _class = treeView_mark.SelectedNode.Text;
+                        _class = comboBox_mark_classes.Text;
                     }
                 }
                 catch
@@ -152,6 +156,20 @@ namespace SchülerOffice
             {
 
             }
+        }
+
+        private void treeView_mark_AfterNodeDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            // Do something fancy here
+        }
+
+        private void button_mark_clear_Click(object sender, EventArgs e)
+        {
+            textBox_mark_mark.Text = "";
+            textBox_mark_mpoints.Text = "";
+            textBox_mark_name.Text = "";
+            textBox_mark_note.Text = "";
+            textBox_mark_points.Text = "";
         }
     }
 }

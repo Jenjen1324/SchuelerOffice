@@ -17,8 +17,5 @@ namespace SchülerOffice
             InitializeComponent();
             UpdateList();
         }
-
-
-
     }
 }
