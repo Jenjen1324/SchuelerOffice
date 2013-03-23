@@ -17,5 +17,11 @@ namespace SchülerOffice
             InitializeComponent();
             UpdateList();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MarkUtils mu = new MarkUtils();
+            mu.ShowDialog();
+        }
     }
 }

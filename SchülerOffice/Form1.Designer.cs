@@ -35,6 +35,7 @@
             this.button_mark_deleteClass = new System.Windows.Forms.Button();
             this.button_mark_addClass = new System.Windows.Forms.Button();
             this.groupBox_mark_newMark = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button_mark_clear = new System.Windows.Forms.Button();
             this.comboBox_mark_classes = new System.Windows.Forms.ComboBox();
             this.label_mark_class = new System.Windows.Forms.Label();
@@ -54,8 +55,9 @@
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox_mark_newMark.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +77,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -153,6 +156,22 @@
             this.groupBox_mark_newMark.TabIndex = 2;
             this.groupBox_mark_newMark.TabStop = false;
             this.groupBox_mark_newMark.Text = "Neue Note";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "0.25x",
+            "0.5x",
+            "1x",
+            "2x",
+            "3x",
+            "4x"});
+            this.comboBox1.Location = new System.Drawing.Point(210, 67);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(50, 21);
+            this.comboBox1.TabIndex = 16;
+            this.comboBox1.Text = "1x";
             // 
             // button_mark_clear
             // 
@@ -316,21 +335,15 @@
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // button1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "0.25x",
-            "0.5x",
-            "1x",
-            "2x",
-            "3x",
-            "4x"});
-            this.comboBox1.Location = new System.Drawing.Point(210, 67);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(50, 21);
-            this.comboBox1.TabIndex = 16;
-            this.comboBox1.Text = "1x";
+            this.button1.Location = new System.Drawing.Point(285, 91);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Debug_Button";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -341,6 +354,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox_mark_newMark.ResumeLayout(false);
@@ -378,6 +392,7 @@
         private System.Windows.Forms.Label label_mark_class;
         private System.Windows.Forms.Button button_mark_clear;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
