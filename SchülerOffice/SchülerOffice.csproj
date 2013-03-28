@@ -60,6 +60,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HomeworkManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Language.cs" />
     <Compile Include="Mark.cs" />
     <Compile Include="MarkStorer.cs">
