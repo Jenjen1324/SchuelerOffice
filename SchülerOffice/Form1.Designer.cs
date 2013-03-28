@@ -30,7 +30,11 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox_tools = new System.Windows.Forms.GroupBox();
+            this.button_markUtils = new System.Windows.Forms.Button();
             this.treeView_mark = new System.Windows.Forms.TreeView();
             this.button_mark_deleteClass = new System.Windows.Forms.Button();
             this.button_mark_addClass = new System.Windows.Forms.Button();
@@ -54,12 +58,17 @@
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView_timeTable = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_options = new System.Windows.Forms.Button();
+            this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox_tools.SuspendLayout();
             this.groupBox_mark_newMark.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -77,6 +86,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -86,8 +96,29 @@
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(318, 263);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(285, 91);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Debug_Button";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.groupBox_tools);
             this.tabPage2.Controls.Add(this.treeView_mark);
             this.tabPage2.Controls.Add(this.button_mark_deleteClass);
             this.tabPage2.Controls.Add(this.button_mark_addClass);
@@ -100,6 +131,25 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Noten";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_tools
+            // 
+            this.groupBox_tools.Controls.Add(this.button_markUtils);
+            this.groupBox_tools.Location = new System.Drawing.Point(555, 12);
+            this.groupBox_tools.Name = "groupBox_tools";
+            this.groupBox_tools.Size = new System.Drawing.Size(217, 385);
+            this.groupBox_tools.TabIndex = 9;
+            this.groupBox_tools.TabStop = false;
+            this.groupBox_tools.Text = "Extras";
+            // 
+            // button_markUtils
+            // 
+            this.button_markUtils.Location = new System.Drawing.Point(6, 19);
+            this.button_markUtils.Name = "button_markUtils";
+            this.button_markUtils.Size = new System.Drawing.Size(205, 23);
+            this.button_markUtils.TabIndex = 0;
+            this.button_markUtils.Text = "Fachübersicht";
+            this.button_markUtils.UseVisualStyleBackColor = true;
             // 
             // treeView_mark
             // 
@@ -319,12 +369,27 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button_options);
+            this.tabPage3.Controls.Add(this.dataGridView_timeTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(780, 405);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView_timeTable
+            // 
+            this.dataGridView_timeTable.AllowUserToAddRows = false;
+            this.dataGridView_timeTable.AllowUserToDeleteRows = false;
+            this.dataGridView_timeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_timeTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTime});
+            this.dataGridView_timeTable.Location = new System.Drawing.Point(8, 3);
+            this.dataGridView_timeTable.Name = "dataGridView_timeTable";
+            this.dataGridView_timeTable.ReadOnly = true;
+            this.dataGridView_timeTable.Size = new System.Drawing.Size(764, 394);
+            this.dataGridView_timeTable.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -335,15 +400,20 @@
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // button_options
             // 
-            this.button1.Location = new System.Drawing.Point(285, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Debug_Button";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_options.Location = new System.Drawing.Point(697, 374);
+            this.button_options.Name = "button_options";
+            this.button_options.Size = new System.Drawing.Size(75, 23);
+            this.button_options.TabIndex = 1;
+            this.button_options.Text = "Optionen";
+            this.button_options.UseVisualStyleBackColor = true;
+            // 
+            // colTime
+            // 
+            this.colTime.HeaderText = "Time:";
+            this.colTime.Name = "colTime";
+            this.colTime.ReadOnly = true;
             // 
             // Form1
             // 
@@ -357,8 +427,11 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox_tools.ResumeLayout(false);
             this.groupBox_mark_newMark.ResumeLayout(false);
             this.groupBox_mark_newMark.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -393,6 +466,12 @@
         private System.Windows.Forms.Button button_mark_clear;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox_tools;
+        private System.Windows.Forms.Button button_markUtils;
+        private System.Windows.Forms.DataGridView dataGridView_timeTable;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_options;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
     }
 }
 

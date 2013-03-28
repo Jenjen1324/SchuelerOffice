@@ -16,12 +16,17 @@ namespace SchülerOffice
         {
             InitializeComponent();
             UpdateList();
+            constructTimeTable();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MarkUtils mu = new MarkUtils();
-            mu.ShowDialog();
+        
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Data.messageBox("Debug", Convert.ToString(dataGridView_timeTable.Columns[0].Width));
         }
     }
 }
