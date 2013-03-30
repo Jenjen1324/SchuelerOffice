@@ -58,10 +58,19 @@
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dataGridView_timeTable = new System.Windows.Forms.DataGridView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button_options = new System.Windows.Forms.Button();
+            this.dataGridView_timeTable = new System.Windows.Forms.DataGridView();
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -69,6 +78,9 @@
             this.groupBox_mark_newMark.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -378,6 +390,15 @@
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button_options
+            // 
+            this.button_options.Location = new System.Drawing.Point(697, 374);
+            this.button_options.Name = "button_options";
+            this.button_options.Size = new System.Drawing.Size(75, 23);
+            this.button_options.TabIndex = 1;
+            this.button_options.Text = "Optionen";
+            this.button_options.UseVisualStyleBackColor = true;
+            // 
             // dataGridView_timeTable
             // 
             this.dataGridView_timeTable.AllowUserToAddRows = false;
@@ -391,8 +412,17 @@
             this.dataGridView_timeTable.Size = new System.Drawing.Size(764, 394);
             this.dataGridView_timeTable.TabIndex = 0;
             // 
+            // colTime
+            // 
+            this.colTime.HeaderText = "Time:";
+            this.colTime.Name = "colTime";
+            this.colTime.ReadOnly = true;
+            // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox2);
+            this.tabPage4.Controls.Add(this.groupBox1);
+            this.tabPage4.Controls.Add(this.treeView1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(780, 405);
@@ -400,20 +430,90 @@
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button_options
+            // groupBox2
             // 
-            this.button_options.Location = new System.Drawing.Point(697, 374);
-            this.button_options.Name = "button_options";
-            this.button_options.Size = new System.Drawing.Size(75, 23);
-            this.button_options.TabIndex = 1;
-            this.button_options.Text = "Optionen";
-            this.button_options.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.button8);
+            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Location = new System.Drawing.Point(175, 116);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(155, 107);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
             // 
-            // colTime
+            // button8
             // 
-            this.colTime.HeaderText = "Time:";
-            this.colTime.Name = "colTime";
-            this.colTime.ReadOnly = true;
+            this.button8.Location = new System.Drawing.Point(6, 77);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(143, 23);
+            this.button8.TabIndex = 2;
+            this.button8.Text = "Alles anzeigen";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 48);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(143, 23);
+            this.button7.TabIndex = 1;
+            this.button7.Text = "Prüfen";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(6, 19);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(143, 23);
+            this.button6.TabIndex = 0;
+            this.button6.Text = "Lernen!";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Location = new System.Drawing.Point(175, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(155, 107);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 77);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(143, 23);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Löschen";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 48);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(143, 23);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Editieren";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(143, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Neu";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(166, 394);
+            this.treeView1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -432,6 +532,9 @@
             this.groupBox_mark_newMark.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -472,6 +575,15 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button_options;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 
