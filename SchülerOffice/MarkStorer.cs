@@ -9,7 +9,7 @@ namespace SchülerOffice
 {
     partial class Form1
     {
-        private void UpdateList()
+        private void UpdateMarks()
         {
             treeView_mark.Nodes.Clear();
             comboBox_mark_classes.Items.Clear();
@@ -62,7 +62,7 @@ namespace SchülerOffice
             if(ac.ShowDialog() == DialogResult.OK)
             {
                 Data.classes.Add(ac.name);
-                UpdateList();
+                UpdateMarks();
             }
         }
 
@@ -92,7 +92,7 @@ namespace SchülerOffice
                         Data.marks.Remove(m);
                     }
                 }
-                UpdateList();
+                UpdateMarks();
             }
             catch
             {
@@ -137,7 +137,7 @@ namespace SchülerOffice
                 string _note = textBox_mark_note.Text;
                 Mark m = new Mark(_class,_name,_date,_mark,_points,_note);
                 Data.marks.Add(m);
-                UpdateList();
+                UpdateMarks();
             }
         }
 
