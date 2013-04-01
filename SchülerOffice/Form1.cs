@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace SchülerOffice
 {
@@ -15,8 +16,7 @@ namespace SchülerOffice
         public Form1()
         {
             InitializeComponent();
-            UpdateList();
-            constructTimeTable();
+            UpdateMarks();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,5 +28,14 @@ namespace SchülerOffice
         {
             Data.messageBox("Debug", Convert.ToString(dataGridView_timeTable.Columns[0].Width));
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dt = dateTimePicker1.Value;
+            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            Calendar cal = dfi.Calendar;
+            label_week.Text = "Woche: " + cal.GetWeekOfYear(dt, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
+        }
+
     }
 }

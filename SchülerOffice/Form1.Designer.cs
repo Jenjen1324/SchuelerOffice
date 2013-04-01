@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -58,9 +61,15 @@
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button_options = new System.Windows.Forms.Button();
+            this.button_timetable_save = new System.Windows.Forms.Button();
+            this.button_timetable_edit = new System.Windows.Forms.Button();
             this.dataGridView_timeTable = new System.Windows.Forms.DataGridView();
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.column_mon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_tue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_wed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_fri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
@@ -71,6 +80,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label_week = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -381,7 +392,10 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button_options);
+            this.tabPage3.Controls.Add(this.label_week);
+            this.tabPage3.Controls.Add(this.dateTimePicker1);
+            this.tabPage3.Controls.Add(this.button_timetable_save);
+            this.tabPage3.Controls.Add(this.button_timetable_edit);
             this.tabPage3.Controls.Add(this.dataGridView_timeTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -390,33 +404,101 @@
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button_options
+            // button_timetable_save
             // 
-            this.button_options.Location = new System.Drawing.Point(697, 374);
-            this.button_options.Name = "button_options";
-            this.button_options.Size = new System.Drawing.Size(75, 23);
-            this.button_options.TabIndex = 1;
-            this.button_options.Text = "Optionen";
-            this.button_options.UseVisualStyleBackColor = true;
+            this.button_timetable_save.Enabled = false;
+            this.button_timetable_save.Location = new System.Drawing.Point(697, 374);
+            this.button_timetable_save.Name = "button_timetable_save";
+            this.button_timetable_save.Size = new System.Drawing.Size(75, 23);
+            this.button_timetable_save.TabIndex = 3;
+            this.button_timetable_save.Text = "Speichern";
+            this.button_timetable_save.UseVisualStyleBackColor = true;
+            this.button_timetable_save.Click += new System.EventHandler(this.button_timetable_save_Click);
+            // 
+            // button_timetable_edit
+            // 
+            this.button_timetable_edit.Enabled = false;
+            this.button_timetable_edit.Location = new System.Drawing.Point(582, 374);
+            this.button_timetable_edit.Name = "button_timetable_edit";
+            this.button_timetable_edit.Size = new System.Drawing.Size(75, 23);
+            this.button_timetable_edit.TabIndex = 2;
+            this.button_timetable_edit.Text = "Verwerfen";
+            this.button_timetable_edit.UseVisualStyleBackColor = true;
+            this.button_timetable_edit.Click += new System.EventHandler(this.button_timetable_edit_Click);
             // 
             // dataGridView_timeTable
             // 
-            this.dataGridView_timeTable.AllowUserToAddRows = false;
-            this.dataGridView_timeTable.AllowUserToDeleteRows = false;
+            this.dataGridView_timeTable.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_timeTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView_timeTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_timeTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colTime});
-            this.dataGridView_timeTable.Location = new System.Drawing.Point(8, 3);
+            this.colTime,
+            this.column_mon,
+            this.Column_tue,
+            this.Column_wed,
+            this.Column_thu,
+            this.Column_fri});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_timeTable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView_timeTable.Location = new System.Drawing.Point(8, 27);
+            this.dataGridView_timeTable.MultiSelect = false;
             this.dataGridView_timeTable.Name = "dataGridView_timeTable";
-            this.dataGridView_timeTable.ReadOnly = true;
-            this.dataGridView_timeTable.Size = new System.Drawing.Size(764, 394);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_timeTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView_timeTable.RowHeadersVisible = false;
+            this.dataGridView_timeTable.Size = new System.Drawing.Size(568, 370);
             this.dataGridView_timeTable.TabIndex = 0;
+            this.dataGridView_timeTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_timeTable_CellChanged);
             // 
             // colTime
             // 
             this.colTime.HeaderText = "Time:";
             this.colTime.Name = "colTime";
-            this.colTime.ReadOnly = true;
+            this.colTime.Width = 65;
+            // 
+            // column_mon
+            // 
+            this.column_mon.HeaderText = "Montag";
+            this.column_mon.Name = "column_mon";
+            // 
+            // Column_tue
+            // 
+            this.Column_tue.HeaderText = "Dienstag";
+            this.Column_tue.Name = "Column_tue";
+            // 
+            // Column_wed
+            // 
+            this.Column_wed.HeaderText = "Mittwoch";
+            this.Column_wed.Name = "Column_wed";
+            // 
+            // Column_thu
+            // 
+            this.Column_thu.HeaderText = "Donnerstag";
+            this.Column_thu.Name = "Column_thu";
+            // 
+            // Column_fri
+            // 
+            this.Column_fri.HeaderText = "Freitag";
+            this.Column_fri.Name = "Column_fri";
             // 
             // tabPage4
             // 
@@ -515,6 +597,24 @@
             this.treeView1.Size = new System.Drawing.Size(166, 394);
             this.treeView1.TabIndex = 0;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Checked = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(8, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(195, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label_week
+            // 
+            this.label_week.AutoSize = true;
+            this.label_week.Location = new System.Drawing.Point(209, 9);
+            this.label_week.Name = "label_week";
+            this.label_week.Size = new System.Drawing.Size(48, 13);
+            this.label_week.TabIndex = 5;
+            this.label_week.Text = "Woche: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -531,6 +631,7 @@
             this.groupBox_mark_newMark.ResumeLayout(false);
             this.groupBox_mark_newMark.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -573,8 +674,6 @@
         private System.Windows.Forms.Button button_markUtils;
         private System.Windows.Forms.DataGridView dataGridView_timeTable;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button_options;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
@@ -584,6 +683,16 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn column_mon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_tue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_wed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_thu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_fri;
+        private System.Windows.Forms.Button button_timetable_save;
+        private System.Windows.Forms.Button button_timetable_edit;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label_week;
     }
 }
 

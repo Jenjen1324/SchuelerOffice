@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Data;
 
 namespace SchülerOffice
 {
@@ -12,10 +13,12 @@ namespace SchülerOffice
     {
         internal static string workingDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Schüler Office";
         internal static string markFile = workingDir + "\\marks.xml";
+        internal static string timetableFile = workingDir + "\\timetable.xml";
 
         internal static List<string> classes = new List<string>();
-
         internal static List<Mark> marks = new List<Mark>();
+
+        internal static DataTable timetable = new DataTable();
 
         internal static void messageBox(string Title,string Message)
         {
@@ -49,7 +52,6 @@ namespace SchülerOffice
             sb.AppendLine("</marks>");
             File.WriteAllText(Data.markFile, sb.ToString());
         }
-
         internal static Language lang = new Language();
     }
 }

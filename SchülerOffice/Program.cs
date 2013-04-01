@@ -15,6 +15,9 @@ namespace SchülerOffice
         [STAThread]
         static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+
             if(!Directory.Exists(Data.workingDir))
             {
                 Directory.CreateDirectory(Data.workingDir);
@@ -22,15 +25,16 @@ namespace SchülerOffice
 
             if(!File.Exists(Data.markFile))
             {
-                FileStream fs = File.Create(Data.markFile);
-                fs.Close();
                 File.WriteAllText(Data.markFile, "<empty></empty>");
+            }
+
+            if (!File.Exists(Data.timetableFile))
+            {
+                File.WriteAllText(Data.timetableFile, "<empty></empty>");
             }
 
             Data.LoadMarks();
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
             Data.SaveMarks();
