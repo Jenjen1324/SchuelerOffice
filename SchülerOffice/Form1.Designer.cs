@@ -61,6 +61,8 @@
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label_week = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button_timetable_save = new System.Windows.Forms.Button();
             this.button_timetable_edit = new System.Windows.Forms.Button();
             this.dataGridView_timeTable = new System.Windows.Forms.DataGridView();
@@ -80,8 +82,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label_week = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -392,6 +393,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.label_week);
             this.tabPage3.Controls.Add(this.dateTimePicker1);
             this.tabPage3.Controls.Add(this.button_timetable_save);
@@ -403,6 +405,24 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label_week
+            // 
+            this.label_week.AutoSize = true;
+            this.label_week.Location = new System.Drawing.Point(209, 9);
+            this.label_week.Name = "label_week";
+            this.label_week.Size = new System.Drawing.Size(48, 13);
+            this.label_week.TabIndex = 5;
+            this.label_week.Text = "Woche: ";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Checked = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(8, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(195, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // button_timetable_save
             // 
@@ -597,23 +617,14 @@
             this.treeView1.Size = new System.Drawing.Size(166, 394);
             this.treeView1.TabIndex = 0;
             // 
-            // dateTimePicker1
+            // label1
             // 
-            this.dateTimePicker1.Checked = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(8, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(195, 20);
-            this.dateTimePicker1.TabIndex = 4;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label_week
-            // 
-            this.label_week.AutoSize = true;
-            this.label_week.Location = new System.Drawing.Point(209, 9);
-            this.label_week.Name = "label_week";
-            this.label_week.Size = new System.Drawing.Size(48, 13);
-            this.label_week.TabIndex = 5;
-            this.label_week.Text = "Woche: ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(582, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
             // 
             // Form1
             // 
@@ -693,6 +704,7 @@
         private System.Windows.Forms.Button button_timetable_edit;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label_week;
+        private System.Windows.Forms.Label label1;
     }
 }
 

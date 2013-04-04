@@ -88,4 +88,17 @@ namespace SchülerOffice
             return loaded;
         }
     }
+
+    public class TimeTable
+    {
+        
+    }
+
+    public class _class
+    {
+        int[][] index { get; set; }
+        string Text { get; set; }
+        string Desc { get; set; }
+        //string 
+    }
 }
