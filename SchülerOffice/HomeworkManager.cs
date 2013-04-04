@@ -23,6 +23,7 @@ namespace SchülerOffice
         {
             button_timetable_edit.Enabled = false;
             button_timetable_save.Enabled = false;
+            dataGridView_timeTable.DataSource = Data.timetable;
             SaveTimeTable();
         }
 
@@ -71,6 +72,7 @@ namespace SchülerOffice
 
         public static string TimeTableToxml()
         {
+            
             List<Dictionary<string, object>> final_data = new List<Dictionary<string, object>>();
             foreach (DataRow row in Data.timetable.Rows)
             {
