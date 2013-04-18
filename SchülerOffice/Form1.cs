@@ -17,6 +17,7 @@ namespace SchülerOffice
         {
             InitializeComponent();
             UpdateMarks();
+            UpdateTimeTable();
         }
 
         private void button1_Click(object sender, EventArgs e)
