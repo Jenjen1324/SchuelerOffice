@@ -12,11 +12,40 @@ namespace SchülerOffice
 {
     partial class Form1
     {
+        void UpdateTimeTable()
+        {
+            foreach (DataGridViewRow row in dataGridView_timeTable.Rows)
+            {
+                if (row == dataGridView_timeTable.Rows[dataGridView_timeTable.Rows.Count - 1])
+                {
+                    break;
+                }
+                dataGridView_timeTable.Rows.Remove(row);
+            }
+            if (Data.timetable.Count > 0)
+            {
+                dataGridView_timeTable.Rows.Add(Data.timetable.Count);
+                int i = 0;
+                int j = 0;
+                foreach (Row row in Data.timetable)
+                {
+                    foreach (Cell c in row.cells)
+                    {
+                        dataGridView_timeTable.Rows[i].Cells[j].Value = c.name;
+                        dataGridView_timeTable.Rows[i].Cells[j].Tag = c.tag;
+                        dataGridView_timeTable.Rows[i].Cells[j].ToolTipText = c.toolTip;
+                        j++;
+                    }
+                    i++;
+                }
+            }
+        }
+
         private void button_timetable_edit_Click(object sender, EventArgs e)
         {
             button_timetable_edit.Enabled = false;
             button_timetable_save.Enabled = false;
-            LoadTimeTable();
+            UpdateTimeTable();
         }
 
         private void button_timetable_save_Click(object sender, EventArgs e)
@@ -24,7 +53,19 @@ namespace SchülerOffice
             button_timetable_edit.Enabled = false;
             button_timetable_save.Enabled = false;
             dataGridView_timeTable.DataSource = Data.timetable;
-            SaveTimeTable();
+            Data.timetable.Clear();
+            foreach (DataGridViewRow dgvr in dataGridView_timeTable.Rows)
+            {
+                List<Cell> cells = new List<Cell>();
+                foreach (DataGridViewCell cell in dgvr.Cells)
+                {
+                    Cell c = new Cell(cell.Value.ToString(), cell.Tag.ToString(), cell.ToolTipText);
+                    cells.Add(c);
+                }
+                Row r = new Row(cells);
+                Data.timetable.Add(r);
+            }
+            //UpdateTimeTable();
         }
 
         public void dataGridView_timeTable_CellChanged(object sender, EventArgs e)
@@ -49,22 +90,24 @@ namespace SchülerOffice
             FileStream xmlfs = new FileStream(file, FileMode.Open);
             XmlReader xmlr = XmlReader.Create(xmlfs);
 
-            List<string> current = null;
+            List<Cell> current = null;
 
             while (xmlr.Read())
             {
                 if (xmlr.Name == "row" && xmlr.NodeType == XmlNodeType.Element)
                 {
-                    current = new List<string>();
+                    current = new List<Cell>();
                 }
                 else if (xmlr.Name == "item" && xmlr.NodeType == XmlNodeType.Element)
                 {
                     string content = xmlr.ReadElementContentAsString();
-                    current.Add(content);
+                    Cell c = new Cell(content, null, content);
+                    current.Add(c);
                 }
                 else if (xmlr.Name == "row" && xmlr.NodeType == XmlNodeType.EndElement)
                 {
-                    Data.timetable.Rows.Add(current);
+                    Row r = new Row(current);
+                    Data.timetable.Add(r);
                 }
             }
             xmlfs.Close();
@@ -74,13 +117,13 @@ namespace SchülerOffice
         {
             
             List<Dictionary<string, object>> final_data = new List<Dictionary<string, object>>();
-            foreach (DataRow row in Data.timetable.Rows)
+            foreach (Row row in Data.timetable)
             {
                 Dictionary<string, object> data = new Dictionary<string, object>();
                 int i = 0;
-                foreach (string cell in row.ItemArray)
+                foreach (Cell cell in row.cells)
                 {
-                    data.Add(String.Format("cell{0}",i.ToString()), cell);
+                    data.Add(String.Format("cell {0}",i.ToString()), cell);
                     i++;
                 }
                 final_data.Add(data);

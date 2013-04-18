@@ -18,7 +18,7 @@ namespace SchülerOffice
         internal static List<string> classes = new List<string>();
         internal static List<Mark> marks = new List<Mark>();
 
-        internal static DataTable timetable = new DataTable();
+        internal static List<Row> timetable = new List<Row>();
 
         internal static void messageBox(string Title,string Message)
         {
