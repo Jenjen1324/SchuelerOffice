@@ -17,7 +17,7 @@ namespace SchülerOffice
         internal static string timetableFile = workingDir + "\\timetable.xml";
 
         internal static List<string> classes = new List<string>();
-        internal static List<Mark> marks = new List<Mark>();
+        internal static List<Mark> marks;
 
         internal static List<Row> timetable = new List<Row>();
         internal static List<HomeWork> homework = new List<HomeWork>();
@@ -32,12 +32,20 @@ namespace SchülerOffice
         internal static void LoadMarks()
         {
             Data.marks = Mark.XmlToMark(Data.markFile);
-            foreach(Mark m in Data.marks)
+
+            if (Data.marks != null)
             {
-                if(!Data.classes.Contains(m._class))
+                foreach (Mark m in Data.marks)
                 {
-                    Data.classes.Add(m._class);
+                    if (!Data.classes.Contains(m._class))
+                    {
+                        Data.classes.Add(m._class);
+                    }
                 }
+            }
+            else
+            {
+                Data.marks = new List<Mark>();
             }
         }
 
@@ -48,10 +56,6 @@ namespace SchülerOffice
             foreach (Mark m in marks)
             {
                 sb.AppendLine(Mark.MarkToXml(m));
-            }
-            if(!sb.ToString().Contains('<'))
-            {
-                sb.AppendLine("<empty></empty>");
             }
             sb.AppendLine("</marks>");
             File.WriteAllText(Data.markFile, sb.ToString());
@@ -92,17 +96,14 @@ namespace SchülerOffice
             List<Dictionary<string, object>> final_data = new List<Dictionary<string, object>>();
             foreach (Row row in Data.timetable)
             {
-                if (row != Data.timetable[Data.timetable.Count - 1])
+                Dictionary<string, object> data = new Dictionary<string, object>();
+                int i = 0;
+                foreach (Cell cell in row.cells)
                 {
-                    Dictionary<string, object> data = new Dictionary<string, object>();
-                    int i = 0;
-                    foreach (Cell cell in row.cells)
-                    {
-                        data.Add(String.Format("cell {0}", i.ToString()), cell.name);
-                        i++;
-                    }
-                    final_data.Add(data);
+                    data.Add(String.Format("cell {0}", i.ToString()), cell.name);
+                    i++;
                 }
+                final_data.Add(data);
             }
             StringBuilder xml = new StringBuilder();
             xml.AppendLine("<timetable>");
@@ -113,9 +114,7 @@ namespace SchülerOffice
                 foreach (KeyValuePair<string, object> item in data)
                 {
                     object val = item.Value;
-                    if (val == null)
-                        val = "(empty)";
-                    xml.AppendLine(String.Format("  <item key=\"{0}\">{1}</item>", item.Key, val));
+                    xml.AppendLine(String.Format("  <item key=\"{0}\">{1}</item>", item.Key, (val != null ? val : "")));
                 }
                 xml.AppendLine(" </row>");
             }

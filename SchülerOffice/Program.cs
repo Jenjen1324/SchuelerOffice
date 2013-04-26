@@ -18,20 +18,7 @@ namespace SchülerOffice
             Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
 
-            if(!Directory.Exists(Data.workingDir))
-            {
-                Directory.CreateDirectory(Data.workingDir);
-            }
-
-            if(!File.Exists(Data.markFile))
-            {
-                File.WriteAllText(Data.markFile, "<empty></empty>");
-            }
-
-            if (!File.Exists(Data.timetableFile))
-            {
-                File.WriteAllText(Data.timetableFile, "<empty></empty>");
-            }
+            InitializeStandardFiles();
 
             Data.LoadMarks();
             Data.LoadTimeTable();
@@ -40,6 +27,19 @@ namespace SchülerOffice
 
             Data.SaveMarks();
             Data.SaveTimeTable();
+        }
+
+        private static void InitializeStandardFiles()
+        {
+            if (!Directory.Exists(Data.workingDir))
+            {
+                Directory.CreateDirectory(Data.workingDir);
+            }
+
+            if (!File.Exists(Data.timetableFile))
+            {
+                File.WriteAllText(Data.timetableFile, "<empty></empty>");
+            }
         }
     }
 }
