@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 
+using SchülerOffice.HomeWorkManager;
+
 namespace SchülerOffice
 {
     partial class Form1
@@ -26,9 +28,9 @@ namespace SchülerOffice
             {
                 dataGridView_timeTable.Rows.Add(Data.timetable.Count);
                 int i = 0;
-                int j = 0;
                 foreach (Row row in Data.timetable)
                 {
+                    int j = 0;
                     foreach (Cell c in row.cells)
                     {
                         dataGridView_timeTable.Rows[i].Cells[j].Value = c.name;
@@ -52,18 +54,28 @@ namespace SchülerOffice
         {
             button_timetable_cancel.Enabled = false;
             button_timetable_save.Enabled = false;
-            dataGridView_timeTable.DataSource = Data.timetable;
             Data.timetable.Clear();
             foreach (DataGridViewRow dgvr in dataGridView_timeTable.Rows)
             {
-                List<Cell> cells = new List<Cell>();
-                foreach (DataGridViewCell cell in dgvr.Cells)
+                if (dgvr != dataGridView_timeTable.Rows[dataGridView_timeTable.Rows.Count - 1])
                 {
-                    Cell c = new Cell(cell.Value.ToString(), cell.Tag.ToString(), cell.ToolTipText);
-                    cells.Add(c);
+                    List<Cell> cells = new List<Cell>();
+                    foreach (DataGridViewCell cell in dgvr.Cells)
+                    {
+                        Cell c;
+                        if (cell.Value == null)
+                        {
+                            c = new Cell("", "", "");
+                        }
+                        else
+                        {
+                            c = new Cell(cell.Value.ToString(), "", cell.ToolTipText);
+                        }
+                        cells.Add(c);
+                    }
+                    Row r = new Row(cells);
+                    Data.timetable.Add(r);
                 }
-                Row r = new Row(cells);
-                Data.timetable.Add(r);
             }
         }
 
@@ -149,6 +161,25 @@ namespace SchülerOffice
         private void button_homework_add_Click(object sender, EventArgs e)
         {
 
+            int delta = DayOfWeek.Monday - dateTimePicker1.Value.DayOfWeek;
+            DateTime monday = dateTimePicker1.Value.AddDays(delta);
+
+            if (dataGridView_timeTable.SelectedCells[0].ColumnIndex != 0)
+            {
+                int day = dataGridView_timeTable.SelectedCells[0].ColumnIndex - 1;
+
+
+                DateTime selectedDay = monday.AddDays(day);
+
+
+
+                AddHomework ah = new AddHomework(selectedDay.DayOfWeek.ToString() + " " + selectedDay.Date.ToString("d.MM.yy"), (dataGridView_timeTable.SelectedCells[0].Value != null ? dataGridView_timeTable.SelectedCells[0].Value.ToString() : ""));
+                if (ah.ShowDialog() == DialogResult.OK)
+                {
+                    HomeWork hw = new HomeWork(ah.task, false, dataGridView_timeTable.SelectedCells[0].RowIndex, day + 1);
+                    Data.homework.Add(hw);
+                }
+            }
         }
 
         private void button_homework_remove_Click(object sender, EventArgs e)
@@ -158,7 +189,17 @@ namespace SchülerOffice
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
+            System.Globalization.CultureInfo ci = System.Threading.Thread.CurrentThread.CurrentCulture;
+            int weekNo = ci.Calendar.GetWeekOfYear(dateTimePicker1.Value,
+            ci.DateTimeFormat.CalendarWeekRule,
+            ci.DateTimeFormat.FirstDayOfWeek);
 
+            label_week.Text = "Woche: " + weekNo.ToString();
+        }
+
+        private DateTime getMonday(DateTime dt)
+        {
+            throw new NotImplementedException();
         }
     }
 }

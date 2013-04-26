@@ -30,7 +30,5 @@ namespace SchülerOffice
         {
             Data.messageBox("Debug", "No function");
         }
-
-
     }
 }
