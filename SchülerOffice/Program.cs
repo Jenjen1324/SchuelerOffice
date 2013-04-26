@@ -34,10 +34,12 @@ namespace SchülerOffice
             }
 
             Data.LoadMarks();
+            Data.LoadTimeTable();
 
             Application.Run(new Form1());
 
             Data.SaveMarks();
+            Data.SaveTimeTable();
         }
     }
 }

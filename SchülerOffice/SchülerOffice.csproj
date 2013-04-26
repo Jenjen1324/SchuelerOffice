@@ -47,10 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddClass.cs">
+    <Compile Include="HomeWorkManager\HomeWork.cs" />
+    <Compile Include="MarkManager\AddClass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddClass.Designer.cs">
+    <Compile Include="MarkManager\AddClass.Designer.cs">
       <DependentUpon>AddClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
@@ -60,29 +61,31 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HomeworkManager.cs">
+    <Compile Include="HomeWorkManager\HomeworkManager.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Language.cs" />
-    <Compile Include="Mark.cs" />
-    <Compile Include="MarkStorer.cs">
+    <Compile Include="MarkManager\Mark.cs" />
+    <Compile Include="MarkManager\MarkStorer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MarkUtils.cs">
+    <Compile Include="MarkManager\MarkUtils.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MarkUtils.Designer.cs">
+    <Compile Include="MarkManager\MarkUtils.Designer.cs">
       <DependentUpon>MarkUtils.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddClass.resx">
+    <Compile Include="HomeWorkManager\TimeTable.cs" />
+    <Compile Include="Vocabulary.cs" />
+    <EmbeddedResource Include="MarkManager\AddClass.resx">
       <DependentUpon>AddClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MarkUtils.resx">
+    <EmbeddedResource Include="MarkManager\MarkUtils.resx">
       <DependentUpon>MarkUtils.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

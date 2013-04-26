@@ -17,25 +17,20 @@ namespace SchülerOffice
         {
             InitializeComponent();
             UpdateMarks();
+            UpdateTimeTable();
+            dateTimePicker1_ValueChanged(null, null);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-        
+            Data.messageBox("Debug", "No function");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Data.messageBox("Debug", Convert.ToString(dataGridView_timeTable.Columns[0].Width));
+            Data.messageBox("Debug", "No function");
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime dt = dateTimePicker1.Value;
-            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-            Calendar cal = dfi.Calendar;
-            label_week.Text = "Woche: " + cal.GetWeekOfYear(dt, CalendarWeekRule.FirstDay, DayOfWeek.Monday);
-        }
 
     }
 }
