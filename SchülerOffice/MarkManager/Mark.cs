@@ -14,78 +14,101 @@ namespace SchülerOffice
         public string name { get; set; }
         public DateTime date { get; set; }
         public Single mark { get; set; }
-        public Single[] points { get; set; }
+        public Single pointsGot { get; set; }
+        public Single pointsMax { get; set; }
         public string note { get; set; }
 
-        public Mark(string _class, string name, DateTime date, Single mark, Single[] points, string note)
+        public Mark(string _class, string name, DateTime date, Single mark, float GottenPoints, float MaxPoints, string note)
         {
             this._class = _class;
             this.name = name;
             this.date = date;
             this.mark = mark;
-            this.points = points;
+            this.pointsGot = GottenPoints;
+            this.pointsMax = MaxPoints;
             this.note = note;
         }
 
         public static string MarkToXml(Mark mark)
         {
-            Dictionary<string, object> data = new Dictionary<string, object>();
-            data.Add("_class", mark._class);
-            data.Add("name", mark.name);
-            data.Add("date", mark.date);
-            data.Add("mark", mark.mark);
-            data.Add("note", mark.note);
-
+            //Load type
+            Type t = typeof(Mark);
+            
+            //Init builder
             StringBuilder xml = new StringBuilder();
-            xml.AppendLine(" <mark>");
-            foreach (KeyValuePair<string, object> item in data)
+            //Start mark node
+            xml.AppendLine("\t<mark>");
+
+            //Loop through each property in class
+            foreach (var property in t.GetProperties())
             {
-                xml.AppendLine(String.Format("  <item key=\"{0}\">{1}</item>", item.Key, item.Value.ToString()));
+                //Store property in xml
+                xml.AppendLine(
+                    String.Format("\t\t<item key=\"{0}\">{1}</item>",
+                    //Name of property
+                    property.Name,
+                    //Gets value from instance and converts to string
+                    property.GetValue(mark).ToString()));
             }
-            foreach (float f in mark.points)
-            {
-                xml.AppendLine(String.Format("  <point>{0}</point>", f));
-            }
-            xml.AppendLine(" </mark>");
+            xml.AppendLine("\t</mark>");
             return xml.ToString();
         }
 
         public static List<Mark> XmlToMark(string file)
         {
-            FileStream xmlfs = new FileStream(file, FileMode.Open);
-            XmlReader xmlr = XmlReader.Create(xmlfs);
-
-			List<Mark> loaded = new List<Mark>();
-			
-            Mark current = null;
-            List<float> cpoints = new List<float>();
-
-            while (xmlr.Read())
+            //Check if file exists
+            if (File.Exists(file))
             {
-				if(xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.Element)
-				{
-					current = new Mark("","",DateTime.Now,0,new float[0],"");
-                    cpoints = new List<float>();
-				}
-				else if(xmlr.Name == "item" && xmlr.NodeType == XmlNodeType.Element)
-				{
-                    string nodekey = xmlr.GetAttribute("key");
-                    var properties = current.GetType().GetProperties();
-                    Type ptype = current.GetType().GetProperty(nodekey).PropertyType;
-                    current.GetType().GetProperty(nodekey).SetValue(current, Convert.ChangeType(xmlr.ReadElementContentAsString(), ptype), null);
-				}
-                else if (xmlr.Name == "point" && xmlr.NodeType == XmlNodeType.Element)
+                //-------------Read file---------------------
+
+                //Open streams
+                FileStream xmlfs = new FileStream(file, FileMode.Open);
+                XmlReader xmlr = XmlReader.Create(xmlfs);
+
+                //Create empty list to hold loaded marks
+                List<Mark> loaded = new List<Mark>();
+
+                //Initialize storing vars
+                Mark current = null;
+
+                //Begin read loop
+                while (xmlr.Read())
                 {
-                    cpoints.Add(Convert.ToSingle(xmlr.ReadElementContentAsString()));
+                    if (xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.Element)
+                    {
+                        current = new Mark("", "", DateTime.Now, 0, 0, 0, "");
+                    }
+                    else if (xmlr.Name == "item" && xmlr.NodeType == XmlNodeType.Element)
+                    {
+                        //Get property name
+                        string nodekey = xmlr.GetAttribute("key");
+
+                        //load properties in class
+                        Type ptype = current.GetType().GetProperty(nodekey).PropertyType;
+
+                        //Set property
+                        current.GetType().GetProperty(nodekey).SetValue(
+                            //Store in current
+                            current,
+                            //Cast data in element to property type
+                            Convert.ChangeType(
+                                xmlr.ReadElementContentAsString(),
+                                ptype),
+                            //Not used, only for indexed properties. Use null
+                            null);
+                    }
+                    else if (xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.EndElement)
+                    {
+                        loaded.Add(current);
+                    }
                 }
-                else if (xmlr.Name == "mark" && xmlr.NodeType == XmlNodeType.EndElement)
-                {
-                    current.points = cpoints.ToArray();
-                    loaded.Add(current);
-                }
+                xmlfs.Close();
+                return loaded;
             }
-            xmlfs.Close();
-            return loaded;
+            else
+            {
+                return null;
+            }
         }
     }
 
