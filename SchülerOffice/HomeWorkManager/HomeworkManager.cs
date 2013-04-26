@@ -41,16 +41,16 @@ namespace SchülerOffice
             }
         }
 
-        private void button_timetable_edit_Click(object sender, EventArgs e)
+        private void button_timetable_cancel_Click(object sender, EventArgs e)
         {
-            button_timetable_edit.Enabled = false;
+            button_timetable_cancel.Enabled = false;
             button_timetable_save.Enabled = false;
             UpdateTimeTable();
         }
 
         private void button_timetable_save_Click(object sender, EventArgs e)
         {
-            button_timetable_edit.Enabled = false;
+            button_timetable_cancel.Enabled = false;
             button_timetable_save.Enabled = false;
             dataGridView_timeTable.DataSource = Data.timetable;
             Data.timetable.Clear();
@@ -65,12 +65,11 @@ namespace SchülerOffice
                 Row r = new Row(cells);
                 Data.timetable.Add(r);
             }
-            //UpdateTimeTable();
         }
 
         public void dataGridView_timeTable_CellChanged(object sender, EventArgs e)
         {
-            button_timetable_edit.Enabled = true;
+            button_timetable_cancel.Enabled = true;
             button_timetable_save.Enabled = true;
         }
 
@@ -146,6 +145,20 @@ namespace SchülerOffice
             xml.AppendLine("</timetable>");
             return xml.ToString();
         }
-        
+
+        private void button_homework_add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_homework_remove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

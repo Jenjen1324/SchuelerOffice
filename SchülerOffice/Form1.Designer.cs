@@ -61,11 +61,13 @@
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.button_homework_add = new System.Windows.Forms.Button();
+            this.button_homework_remove = new System.Windows.Forms.Button();
+            this.checkedListBox_homework = new System.Windows.Forms.CheckedListBox();
             this.label_week = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.button_timetable_save = new System.Windows.Forms.Button();
-            this.button_timetable_edit = new System.Windows.Forms.Button();
+            this.button_timetable_cancel = new System.Windows.Forms.Button();
             this.dataGridView_timeTable = new System.Windows.Forms.DataGridView();
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.column_mon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,21 +124,21 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(318, 263);
+            this.button2.Location = new System.Drawing.Point(607, 35);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(165, 23);
             this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
+            this.button2.Text = "Debug 2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(285, 91);
+            this.button1.Location = new System.Drawing.Point(607, 6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Debug_Button";
+            this.button1.Text = "Debug 1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -393,11 +395,13 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Controls.Add(this.button_homework_add);
+            this.tabPage3.Controls.Add(this.button_homework_remove);
+            this.tabPage3.Controls.Add(this.checkedListBox_homework);
             this.tabPage3.Controls.Add(this.label_week);
             this.tabPage3.Controls.Add(this.dateTimePicker1);
             this.tabPage3.Controls.Add(this.button_timetable_save);
-            this.tabPage3.Controls.Add(this.button_timetable_edit);
+            this.tabPage3.Controls.Add(this.button_timetable_cancel);
             this.tabPage3.Controls.Add(this.dataGridView_timeTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -406,14 +410,34 @@
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // button_homework_add
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(582, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.button_homework_add.Location = new System.Drawing.Point(582, 345);
+            this.button_homework_add.Name = "button_homework_add";
+            this.button_homework_add.Size = new System.Drawing.Size(190, 23);
+            this.button_homework_add.TabIndex = 9;
+            this.button_homework_add.Text = "Hausaufgabe Hinzufügen";
+            this.button_homework_add.UseVisualStyleBackColor = true;
+            this.button_homework_add.Click += new System.EventHandler(this.button_homework_add_Click);
+            // 
+            // button_homework_remove
+            // 
+            this.button_homework_remove.Location = new System.Drawing.Point(582, 374);
+            this.button_homework_remove.Name = "button_homework_remove";
+            this.button_homework_remove.Size = new System.Drawing.Size(190, 23);
+            this.button_homework_remove.TabIndex = 8;
+            this.button_homework_remove.Text = "Hausaufgabe Löschen";
+            this.button_homework_remove.UseVisualStyleBackColor = true;
+            this.button_homework_remove.Click += new System.EventHandler(this.button_homework_remove_Click);
+            // 
+            // checkedListBox_homework
+            // 
+            this.checkedListBox_homework.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox_homework.FormattingEnabled = true;
+            this.checkedListBox_homework.Location = new System.Drawing.Point(582, 27);
+            this.checkedListBox_homework.Name = "checkedListBox_homework";
+            this.checkedListBox_homework.Size = new System.Drawing.Size(190, 375);
+            this.checkedListBox_homework.TabIndex = 7;
             // 
             // label_week
             // 
@@ -436,7 +460,7 @@
             // button_timetable_save
             // 
             this.button_timetable_save.Enabled = false;
-            this.button_timetable_save.Location = new System.Drawing.Point(697, 374);
+            this.button_timetable_save.Location = new System.Drawing.Point(89, 374);
             this.button_timetable_save.Name = "button_timetable_save";
             this.button_timetable_save.Size = new System.Drawing.Size(75, 23);
             this.button_timetable_save.TabIndex = 3;
@@ -444,16 +468,16 @@
             this.button_timetable_save.UseVisualStyleBackColor = true;
             this.button_timetable_save.Click += new System.EventHandler(this.button_timetable_save_Click);
             // 
-            // button_timetable_edit
+            // button_timetable_cancel
             // 
-            this.button_timetable_edit.Enabled = false;
-            this.button_timetable_edit.Location = new System.Drawing.Point(582, 374);
-            this.button_timetable_edit.Name = "button_timetable_edit";
-            this.button_timetable_edit.Size = new System.Drawing.Size(75, 23);
-            this.button_timetable_edit.TabIndex = 2;
-            this.button_timetable_edit.Text = "Verwerfen";
-            this.button_timetable_edit.UseVisualStyleBackColor = true;
-            this.button_timetable_edit.Click += new System.EventHandler(this.button_timetable_edit_Click);
+            this.button_timetable_cancel.Enabled = false;
+            this.button_timetable_cancel.Location = new System.Drawing.Point(8, 374);
+            this.button_timetable_cancel.Name = "button_timetable_cancel";
+            this.button_timetable_cancel.Size = new System.Drawing.Size(75, 23);
+            this.button_timetable_cancel.TabIndex = 2;
+            this.button_timetable_cancel.Text = "Verwerfen";
+            this.button_timetable_cancel.UseVisualStyleBackColor = true;
+            this.button_timetable_cancel.Click += new System.EventHandler(this.button_timetable_cancel_Click);
             // 
             // dataGridView_timeTable
             // 
@@ -494,7 +518,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView_timeTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView_timeTable.RowHeadersVisible = false;
-            this.dataGridView_timeTable.Size = new System.Drawing.Size(455, 237);
+            this.dataGridView_timeTable.Size = new System.Drawing.Size(568, 341);
             this.dataGridView_timeTable.TabIndex = 0;
             this.dataGridView_timeTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_timeTable_CellChanged);
             // 
@@ -632,6 +656,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 431);
             this.Controls.Add(this.tabControl1);
+            this.MaximumSize = new System.Drawing.Size(804, 469);
+            this.MinimumSize = new System.Drawing.Size(804, 469);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
@@ -701,10 +727,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_thu;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_fri;
         private System.Windows.Forms.Button button_timetable_save;
-        private System.Windows.Forms.Button button_timetable_edit;
+        private System.Windows.Forms.Button button_timetable_cancel;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label_week;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckedListBox checkedListBox_homework;
+        private System.Windows.Forms.Button button_homework_add;
+        private System.Windows.Forms.Button button_homework_remove;
     }
 }
 
