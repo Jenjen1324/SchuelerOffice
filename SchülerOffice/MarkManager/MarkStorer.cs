@@ -133,9 +133,10 @@ namespace SchülerOffice
                 string _name = textBox_mark_name.Text;
                 DateTime _date = Convert.ToDateTime(dateTimePicker_mark.Text);
                 float _mark = Convert.ToSingle(textBox_mark_mark.Text);
-                float[] _points = new float[] {Convert.ToSingle(textBox_mark_points.Text), Convert.ToSingle(textBox_mark_mpoints.Text)};
+                float _pointsGot = Convert.ToSingle(textBox_mark_points.Text);
+                float _pointsMax = Convert.ToSingle(textBox_mark_mpoints.Text);
                 string _note = textBox_mark_note.Text;
-                Mark m = new Mark(_class,_name,_date,_mark,_points,_note);
+                Mark m = new Mark(_class,_name,_date,_mark,_pointsGot, _pointsMax,_note);
                 Data.marks.Add(m);
                 UpdateMarks();
             }
@@ -149,8 +150,8 @@ namespace SchülerOffice
                 textBox_mark_name.Text = m.name;
                 dateTimePicker_mark.Text = m.date.ToString();
                 textBox_mark_mark.Text = m.mark.ToString();
-                textBox_mark_points.Text = m.points[0].ToString();
-                textBox_mark_mpoints.Text = m.points[1].ToString();
+                textBox_mark_points.Text = m.pointsGot.ToString();
+                textBox_mark_mpoints.Text = m.pointsMax.ToString();
                 textBox_mark_note.Text = m.note;
             }
             catch
