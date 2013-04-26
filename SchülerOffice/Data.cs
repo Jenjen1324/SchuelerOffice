@@ -92,8 +92,8 @@ namespace SchülerOffice
             List<Dictionary<string, object>> final_data = new List<Dictionary<string, object>>();
             foreach (Row row in Data.timetable)
             {
-                //if (row != Data.timetable[Data.timetable.Count - 1])
-                //{
+                if (row != Data.timetable[Data.timetable.Count - 1])
+                {
                     Dictionary<string, object> data = new Dictionary<string, object>();
                     int i = 0;
                     foreach (Cell cell in row.cells)
@@ -102,7 +102,7 @@ namespace SchülerOffice
                         i++;
                     }
                     final_data.Add(data);
-                //}
+                }
             }
             StringBuilder xml = new StringBuilder();
             xml.AppendLine("<timetable>");
