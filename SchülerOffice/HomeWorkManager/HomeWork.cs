@@ -27,14 +27,14 @@ namespace SchülerOffice
         /// Which day is choosen
         /// (Count from the x axis)
         /// </summary>
-        public int day { get; set; }
+        public DateTime date { get; set; }
 
-        public HomeWork(string text, bool completet, int time, int day)
+        public HomeWork(string text, bool completet, int time, DateTime date)
         {
             this.text = text;
             this.completet = completet;
             this.time = time;
-            this.day = day;
+            this.date = date;
         }
     }
 }

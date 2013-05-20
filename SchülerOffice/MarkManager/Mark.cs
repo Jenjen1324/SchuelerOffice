@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
 
+
 namespace SchülerOffice
 {
     public class Mark
@@ -110,11 +111,6 @@ namespace SchülerOffice
                 return null;
             }
         }
-    }
-
-    public class TimeTable
-    {
-        
     }
 
     public class _class

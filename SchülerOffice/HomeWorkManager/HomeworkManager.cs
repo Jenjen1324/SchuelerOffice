@@ -9,12 +9,13 @@ using System.IO;
 using System.Xml;
 
 using SchülerOffice.HomeWorkManager;
+using System.Drawing;
 
 namespace SchülerOffice
 {
     partial class Form1
     {
-        void UpdateTimeTable()
+        private void UpdateTimeTable()
         {
             foreach (DataGridViewRow row in dataGridView_timeTable.Rows)
             {
@@ -79,21 +80,40 @@ namespace SchülerOffice
             }
         }
 
-        public void dataGridView_timeTable_CellChanged(object sender, EventArgs e)
+        private void dataGridView_timeTable_CellChanged(object sender, EventArgs e)
         {
             button_timetable_cancel.Enabled = true;
             button_timetable_save.Enabled = true;
         }
 
-        void LoadTimeTable()
+        private void dataGridView_timeTable_SelectionChanged(object sender, EventArgs e)
         {
-            dataGridView_timeTable.DataSource = Data.timetable;
+            CellInfo cell = new CellInfo(dataGridView_timeTable.SelectedCells[0],getMonday(dateTimePicker1.Value));
+            checkedListBox_homework.Items.Clear();
+
+            foreach (HomeWork hw in cell.homework)
+            {
+                checkedListBox_homework.Items.Add(hw.text, hw.completet);
+            }
         }
 
-        void SaveTimeTable()
+        private void checkedListBox_homework_itemChecked(object sender, EventArgs e)
         {
-            string data = Form1.TimeTableToxml();
-            File.WriteAllText(Data.timetableFile, data);
+            CellInfo cell = new CellInfo(dataGridView_timeTable.SelectedCells[0], getMonday(dateTimePicker1.Value));
+            string selection = checkedListBox_homework.SelectedItem.ToString();
+            CheckState checkstate = checkedListBox_homework.GetItemCheckState(checkedListBox_homework.SelectedIndex);
+            bool state = (checkstate == CheckState.Checked ? true : false);
+
+            foreach (HomeWork hw in cell.homework)
+            {
+                if (hw.text == selection)
+                {
+                    Data.homework.Remove(hw);
+                    hw.completet = state;
+                    Data.homework.Add(hw);
+                    displayHomework();
+                }
+            }
         }
 
         public static void xmlToTimetable(string file)
@@ -161,30 +181,37 @@ namespace SchülerOffice
         private void button_homework_add_Click(object sender, EventArgs e)
         {
 
-            int delta = DayOfWeek.Monday - dateTimePicker1.Value.DayOfWeek;
-            DateTime monday = dateTimePicker1.Value.AddDays(delta);
+            DateTime monday = getMonday(dateTimePicker1.Value);
 
             if (dataGridView_timeTable.SelectedCells[0].ColumnIndex != 0)
             {
                 int day = dataGridView_timeTable.SelectedCells[0].ColumnIndex - 1;
 
-
                 DateTime selectedDay = monday.AddDays(day);
-
-
 
                 AddHomework ah = new AddHomework(selectedDay.DayOfWeek.ToString() + " " + selectedDay.Date.ToString("d.MM.yy"), (dataGridView_timeTable.SelectedCells[0].Value != null ? dataGridView_timeTable.SelectedCells[0].Value.ToString() : ""));
                 if (ah.ShowDialog() == DialogResult.OK)
                 {
-                    HomeWork hw = new HomeWork(ah.task, false, dataGridView_timeTable.SelectedCells[0].RowIndex, day + 1);
+                    HomeWork hw = new HomeWork(ah.task, false, dataGridView_timeTable.SelectedCells[0].RowIndex, selectedDay);
                     Data.homework.Add(hw);
+                    displayHomework();
                 }
             }
         }
 
         private void button_homework_remove_Click(object sender, EventArgs e)
         {
+            CellInfo cell = new CellInfo(dataGridView_timeTable.SelectedCells[0], getMonday(dateTimePicker1.Value));
+            string selection = checkedListBox_homework.SelectedItem.ToString();
+            foreach (HomeWork hw in cell.homework)
+            {
+                if (hw.text == selection)
+                {
+                    Data.homework.Remove(hw);
 
+                    displayHomework();
+                }
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -194,12 +221,74 @@ namespace SchülerOffice
             ci.DateTimeFormat.CalendarWeekRule,
             ci.DateTimeFormat.FirstDayOfWeek);
 
+            // Put dates on dataGridView
             label_week.Text = "Woche: " + weekNo.ToString();
+            DateTime dt = getMonday(dateTimePicker1.Value);
+            dataGridView_timeTable.Columns[1].HeaderText = "Montag " + getDate(dt);
+            dataGridView_timeTable.Columns[2].HeaderText = "Dienstag " + getDate(dt.AddDays(1));
+            dataGridView_timeTable.Columns[3].HeaderText = "Mittwoch " + getDate(dt.AddDays(2));
+            dataGridView_timeTable.Columns[4].HeaderText = "Donnerstag " + getDate(dt.AddDays(3));
+            dataGridView_timeTable.Columns[5].HeaderText = "Freitag " + getDate(dt.AddDays(4));
+
+            displayHomework();
+        }
+
+        private void displayHomework()
+        {
+            foreach (DataGridViewRow row in dataGridView_timeTable.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.White;
+                }
+            }
+
+            DateTime monday = getMonday(dateTimePicker1.Value);
+
+            for (int i = 0; i < 5; i++)
+            {
+                foreach (HomeWork hw in Data.homework)
+                {
+                    if (getDate(hw.date) == getDate(monday.AddDays(i)))
+                    {
+                        DataGridViewCell cell = dataGridView_timeTable.Rows[hw.time].Cells[i + 1];
+                        if (hw.completet && cell.Style.BackColor != Color.Red)
+                        {
+                            cell.Style.BackColor = Color.Green;
+                        }
+                        else
+                        {
+                            cell.Style.BackColor = Color.Red;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void button_homework_dateDec_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddDays(-7);
+        }
+
+        private void button_homework_dateInc_Click(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = dateTimePicker1.Value.AddDays(7);
         }
 
         private DateTime getMonday(DateTime dt)
         {
-            throw new NotImplementedException();
+            int delta = DayOfWeek.Monday - dateTimePicker1.Value.DayOfWeek;
+            if (dateTimePicker1.Value.DayOfWeek == DayOfWeek.Sunday)
+            {
+                return dateTimePicker1.Value.AddDays(-6);
+            }
+
+            return dateTimePicker1.Value.AddDays(delta);
+        }
+
+        private string getDate(DateTime dt)
+        {
+            return dt.ToString("d.MM.yy");
         }
     }
 }

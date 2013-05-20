@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 
+using SchülerOffice.VocabManager;
+
 namespace SchülerOffice
 {
     public partial class Form1 : Form
@@ -19,11 +21,13 @@ namespace SchülerOffice
             UpdateMarks();
             UpdateTimeTable();
             dateTimePicker1_ValueChanged(null, null);
+            UpdateVocabulary();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Data.messageBox("Debug", "No function");
+            UpdateVocabulary();
+            //Data.messageBox("Debug", "No function");
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using SchülerOffice;
 
 namespace SchülerOffice
 {
@@ -60,7 +61,7 @@ namespace SchülerOffice
         private void button_calcuteTargetMark_Click(object sender, EventArgs e)
         {
             //WIP
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
             if (textBox_targetMark.Text != "")
             {
                 try

@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>school-2.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -84,7 +87,25 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HomeWorkManager\TimeTable.cs" />
-    <Compile Include="Vocabulary.cs" />
+    <Compile Include="VocabManager\AddVocabulary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VocabManager\AddVocabulary.Designer.cs">
+      <DependentUpon>AddVocabulary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VocabManager\Trainer\Trainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VocabManager\Trainer\Trainer.Designer.cs">
+      <DependentUpon>Trainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VocabManager\Trainer\VocabTrainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VocabManager\VocabUtils.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VocabManager\Vocabulary.cs" />
     <EmbeddedResource Include="HomeWorkManager\AddHomework.resx">
       <DependentUpon>AddHomework.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +127,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VocabManager\AddVocabulary.resx">
+      <DependentUpon>AddVocabulary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VocabManager\Trainer\Trainer.resx">
+      <DependentUpon>Trainer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="school-2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,11 +22,28 @@ namespace SchülerOffice
 
             Data.LoadMarks();
             Data.LoadTimeTable();
+            Data.LoadHomeWork();
+            Data.LoadVocabulary();
 
-            Application.Run(new Form1());
+            bool running = true;
+
+            while (running)
+            {
+                //try
+                //{
+                    Application.Run(new Form1());
+                    running = false;
+                //}
+                //catch (Exception e)
+                /*{
+                    MessageBox.Show(String.Format("An error has occured! Details: {0}", e.Message));
+                }*/
+            }
 
             Data.SaveMarks();
             Data.SaveTimeTable();
+            Data.SaveHomeWork();
+            Data.SaveVocabulary();
         }
 
         private static void InitializeStandardFiles()

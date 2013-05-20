@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -61,6 +62,8 @@
             this.label_mark_mark = new System.Windows.Forms.Label();
             this.label_mark_classes = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button_homework_dateInc = new System.Windows.Forms.Button();
+            this.button_homework_dateDec = new System.Windows.Forms.Button();
             this.button_homework_add = new System.Windows.Forms.Button();
             this.button_homework_remove = new System.Windows.Forms.Button();
             this.checkedListBox_homework = new System.Windows.Forms.CheckedListBox();
@@ -76,14 +79,18 @@
             this.Column_thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_fri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridView_voc = new System.Windows.Forms.DataGridView();
+            this.col_lang1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_lang2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button_voc_display = new System.Windows.Forms.Button();
+            this.button_voc_test = new System.Windows.Forms.Button();
+            this.button_voc_learn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_voc_delete = new System.Windows.Forms.Button();
+            this.button_voc_edit = new System.Windows.Forms.Button();
+            this.button_voc_new = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -93,6 +100,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_voc)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -176,6 +184,7 @@
             this.button_markUtils.TabIndex = 0;
             this.button_markUtils.Text = "Fachübersicht";
             this.button_markUtils.UseVisualStyleBackColor = true;
+            this.button_markUtils.Click += new System.EventHandler(this.button_markUtils_Click);
             // 
             // treeView_mark
             // 
@@ -395,6 +404,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button_homework_dateInc);
+            this.tabPage3.Controls.Add(this.button_homework_dateDec);
             this.tabPage3.Controls.Add(this.button_homework_add);
             this.tabPage3.Controls.Add(this.button_homework_remove);
             this.tabPage3.Controls.Add(this.checkedListBox_homework);
@@ -409,6 +420,26 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // button_homework_dateInc
+            // 
+            this.button_homework_dateInc.Location = new System.Drawing.Point(302, 2);
+            this.button_homework_dateInc.Name = "button_homework_dateInc";
+            this.button_homework_dateInc.Size = new System.Drawing.Size(26, 23);
+            this.button_homework_dateInc.TabIndex = 11;
+            this.button_homework_dateInc.Text = ">";
+            this.button_homework_dateInc.UseVisualStyleBackColor = true;
+            this.button_homework_dateInc.Click += new System.EventHandler(this.button_homework_dateInc_Click);
+            // 
+            // button_homework_dateDec
+            // 
+            this.button_homework_dateDec.Location = new System.Drawing.Point(277, 2);
+            this.button_homework_dateDec.Name = "button_homework_dateDec";
+            this.button_homework_dateDec.Size = new System.Drawing.Size(26, 23);
+            this.button_homework_dateDec.TabIndex = 10;
+            this.button_homework_dateDec.Text = "<";
+            this.button_homework_dateDec.UseVisualStyleBackColor = true;
+            this.button_homework_dateDec.Click += new System.EventHandler(this.button_homework_dateDec_Click);
             // 
             // button_homework_add
             // 
@@ -438,15 +469,16 @@
             this.checkedListBox_homework.Name = "checkedListBox_homework";
             this.checkedListBox_homework.Size = new System.Drawing.Size(190, 375);
             this.checkedListBox_homework.TabIndex = 7;
+            this.checkedListBox_homework.SelectedIndexChanged += new System.EventHandler(this.checkedListBox_homework_itemChecked);
             // 
             // label_week
             // 
             this.label_week.AutoSize = true;
-            this.label_week.Location = new System.Drawing.Point(209, 9);
+            this.label_week.Location = new System.Drawing.Point(209, 7);
             this.label_week.Name = "label_week";
-            this.label_week.Size = new System.Drawing.Size(48, 13);
+            this.label_week.Size = new System.Drawing.Size(62, 13);
             this.label_week.TabIndex = 5;
-            this.label_week.Text = "Woche: ";
+            this.label_week.Text = "Woche: ##";
             // 
             // dateTimePicker1
             // 
@@ -521,6 +553,7 @@
             this.dataGridView_timeTable.Size = new System.Drawing.Size(568, 341);
             this.dataGridView_timeTable.TabIndex = 0;
             this.dataGridView_timeTable.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView_timeTable_CellChanged);
+            this.dataGridView_timeTable.SelectionChanged += new System.EventHandler(this.dataGridView_timeTable_SelectionChanged);
             // 
             // colTime
             // 
@@ -555,6 +588,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dataGridView_voc);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.groupBox1);
             this.tabPage4.Controls.Add(this.treeView1);
@@ -565,11 +599,42 @@
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // dataGridView_voc
+            // 
+            this.dataGridView_voc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_voc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_lang1,
+            this.col_lang2,
+            this.col_desc});
+            this.dataGridView_voc.Location = new System.Drawing.Point(336, 3);
+            this.dataGridView_voc.Name = "dataGridView_voc";
+            this.dataGridView_voc.RowHeadersVisible = false;
+            this.dataGridView_voc.Size = new System.Drawing.Size(436, 399);
+            this.dataGridView_voc.TabIndex = 3;
+            // 
+            // col_lang1
+            // 
+            this.col_lang1.HeaderText = "1. Sprache";
+            this.col_lang1.Name = "col_lang1";
+            this.col_lang1.Width = 120;
+            // 
+            // col_lang2
+            // 
+            this.col_lang2.HeaderText = "2. Sprache";
+            this.col_lang2.Name = "col_lang2";
+            this.col_lang2.Width = 120;
+            // 
+            // col_desc
+            // 
+            this.col_desc.HeaderText = "Beschreibung";
+            this.col_desc.Name = "col_desc";
+            this.col_desc.Width = 193;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button6);
+            this.groupBox2.Controls.Add(this.button_voc_display);
+            this.groupBox2.Controls.Add(this.button_voc_test);
+            this.groupBox2.Controls.Add(this.button_voc_learn);
             this.groupBox2.Location = new System.Drawing.Point(175, 116);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(155, 107);
@@ -577,38 +642,41 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // button8
+            // button_voc_display
             // 
-            this.button8.Location = new System.Drawing.Point(6, 77);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(143, 23);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Alles anzeigen";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button_voc_display.Location = new System.Drawing.Point(6, 77);
+            this.button_voc_display.Name = "button_voc_display";
+            this.button_voc_display.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_display.TabIndex = 2;
+            this.button_voc_display.Text = "Alles anzeigen";
+            this.button_voc_display.UseVisualStyleBackColor = true;
+            this.button_voc_display.Click += new System.EventHandler(this.button_voc_display_Click);
             // 
-            // button7
+            // button_voc_test
             // 
-            this.button7.Location = new System.Drawing.Point(6, 48);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(143, 23);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Prüfen";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button_voc_test.Location = new System.Drawing.Point(6, 48);
+            this.button_voc_test.Name = "button_voc_test";
+            this.button_voc_test.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_test.TabIndex = 1;
+            this.button_voc_test.Text = "Prüfen";
+            this.button_voc_test.UseVisualStyleBackColor = true;
+            this.button_voc_test.Click += new System.EventHandler(this.button_voc_test_Click);
             // 
-            // button6
+            // button_voc_learn
             // 
-            this.button6.Location = new System.Drawing.Point(6, 19);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(143, 23);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Lernen!";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button_voc_learn.Location = new System.Drawing.Point(6, 19);
+            this.button_voc_learn.Name = "button_voc_learn";
+            this.button_voc_learn.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_learn.TabIndex = 0;
+            this.button_voc_learn.Text = "Lernen!";
+            this.button_voc_learn.UseVisualStyleBackColor = true;
+            this.button_voc_learn.Click += new System.EventHandler(this.button_voc_learn_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.button_voc_delete);
+            this.groupBox1.Controls.Add(this.button_voc_edit);
+            this.groupBox1.Controls.Add(this.button_voc_new);
             this.groupBox1.Location = new System.Drawing.Point(175, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(155, 107);
@@ -616,32 +684,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // button5
+            // button_voc_delete
             // 
-            this.button5.Location = new System.Drawing.Point(6, 77);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(143, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Löschen";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button_voc_delete.Location = new System.Drawing.Point(6, 77);
+            this.button_voc_delete.Name = "button_voc_delete";
+            this.button_voc_delete.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_delete.TabIndex = 2;
+            this.button_voc_delete.Text = "Löschen";
+            this.button_voc_delete.UseVisualStyleBackColor = true;
+            this.button_voc_delete.Click += new System.EventHandler(this.button_voc_delete_Click);
             // 
-            // button4
+            // button_voc_edit
             // 
-            this.button4.Location = new System.Drawing.Point(6, 48);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(143, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Editieren";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button_voc_edit.Location = new System.Drawing.Point(6, 48);
+            this.button_voc_edit.Name = "button_voc_edit";
+            this.button_voc_edit.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_edit.TabIndex = 1;
+            this.button_voc_edit.Text = "Editieren";
+            this.button_voc_edit.UseVisualStyleBackColor = true;
+            this.button_voc_edit.Click += new System.EventHandler(this.button_voc_edit_Click);
             // 
-            // button3
+            // button_voc_new
             // 
-            this.button3.Location = new System.Drawing.Point(6, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(143, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Neu";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_voc_new.Location = new System.Drawing.Point(6, 19);
+            this.button_voc_new.Name = "button_voc_new";
+            this.button_voc_new.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_new.TabIndex = 0;
+            this.button_voc_new.Text = "Neu";
+            this.button_voc_new.UseVisualStyleBackColor = true;
+            this.button_voc_new.Click += new System.EventHandler(this.button3_Click);
             // 
             // treeView1
             // 
@@ -649,6 +720,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(166, 394);
             this.treeView1.TabIndex = 0;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
             // Form1
             // 
@@ -656,10 +728,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 431);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(804, 469);
             this.MinimumSize = new System.Drawing.Size(804, 469);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Schüler Office";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -671,6 +745,7 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_voc)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -712,13 +787,13 @@
         private System.Windows.Forms.DataGridView dataGridView_timeTable;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button_voc_display;
+        private System.Windows.Forms.Button button_voc_test;
+        private System.Windows.Forms.Button button_voc_learn;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_voc_delete;
+        private System.Windows.Forms.Button button_voc_edit;
+        private System.Windows.Forms.Button button_voc_new;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn column_mon;
@@ -733,6 +808,12 @@
         private System.Windows.Forms.CheckedListBox checkedListBox_homework;
         private System.Windows.Forms.Button button_homework_add;
         private System.Windows.Forms.Button button_homework_remove;
+        private System.Windows.Forms.Button button_homework_dateInc;
+        private System.Windows.Forms.Button button_homework_dateDec;
+        private System.Windows.Forms.DataGridView dataGridView_voc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_lang1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_lang2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_desc;
     }
 }
 

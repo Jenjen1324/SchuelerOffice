@@ -175,5 +175,12 @@ namespace SchülerOffice
             textBox_mark_points.Text = "";
             comboBox_mark_classes.Text = "";
         }
+
+
+        private void button_markUtils_Click(object sender, EventArgs e)
+        {
+            MarkUtils mu = new MarkUtils();
+            mu.Show();
+        }
     }
 }

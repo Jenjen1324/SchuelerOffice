@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddHomework));
             this.label_addHomework_day = new System.Windows.Forms.Label();
             this.textBox_addHomework_day = new System.Windows.Forms.TextBox();
             this.label_addHomework_class = new System.Windows.Forms.Label();
@@ -122,6 +123,7 @@
             this.Controls.Add(this.label_addHomework_class);
             this.Controls.Add(this.textBox_addHomework_day);
             this.Controls.Add(this.label_addHomework_day);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddHomework";
             this.Text = "AddHomework";
             this.ResumeLayout(false);
