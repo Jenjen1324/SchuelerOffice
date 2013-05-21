@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Trainer));
             this.textBox_1lang = new System.Windows.Forms.TextBox();
             this.textBox_2lang = new System.Windows.Forms.TextBox();
             this.button_check = new System.Windows.Forms.Button();
@@ -288,6 +289,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Trainer";
             this.Text = "Trainer";
             this.groupBox1.ResumeLayout(false);

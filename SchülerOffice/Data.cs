@@ -18,7 +18,7 @@ namespace SchülerOffice
         internal static string markFile = workingDir + "\\marks.xml";
         internal static string timetableFile = workingDir + "\\timetable.xml";
         internal static string homeWorkFile = workingDir + "\\homework.xml";
-        internal static string vocabularyFile = workingDir + "\\vocabulary.xml";
+        internal static string vocabularyDir = workingDir + "\\vocabularies\\";
 
         internal static List<string> classes = new List<string>();
         internal static List<Mark> marks;
@@ -253,22 +253,42 @@ namespace SchülerOffice
 
         internal static void LoadVocabulary()
         {
-            if (File.Exists(vocabularyFile))
+            if (Directory.Exists(vocabularyDir))
             {
-                vocabulary = Vocabulary.xmlToVocab(File.ReadAllText(Data.vocabularyFile));
+                string[] files = Directory.GetFiles(vocabularyDir);
+                foreach (string file in files)
+                {
+                    vocabulary.Add(Vocabulary.xmlToVocab(File.ReadAllText(file)));
+                }
             }
         }
 
         internal static void SaveVocabulary()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("<Vocabularies>");
+            if (!Directory.Exists(vocabularyDir))
+            {
+                Directory.CreateDirectory(vocabularyDir);
+            }
+
             foreach (Vocabulary voc in Data.vocabulary)
             {
-                sb.AppendLine(Vocabulary.vocabToXml(voc));
+                string[] files = Directory.GetFiles(vocabularyDir);
+                foreach (string file in files)
+                {
+                    File.Delete(file);
+                }
+
+                string content = Vocabulary.vocabToXml(voc);
+                string fname = vocabularyDir + voc.name + ".xml";
+                int i = 0;
+                while (File.Exists(fname))
+                {
+                    i++;
+                    fname = vocabularyDir + voc.name + "_" + i.ToString() + ".xml";
+                }
+                File.WriteAllText(fname, content);
             }
-            sb.AppendLine("</Vocabularies>");
-            File.WriteAllText(vocabularyFile, sb.ToString());
+            
         }
     }
 }

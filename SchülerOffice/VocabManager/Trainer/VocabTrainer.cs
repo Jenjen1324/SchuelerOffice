@@ -20,7 +20,7 @@ namespace SchülerOffice
                 Trainer form = new Trainer(getSelectedVocabulary());
                 form.ShowDialog();
             }
-            UpdateVocabulary();
+            treeView1_AfterSelect(null, null);
         }
 
         private void button_voc_test_Click(object sender, EventArgs e)
@@ -31,6 +31,7 @@ namespace SchülerOffice
                 // Test Form
                 //form.ShowDialog();
             }
+            
         }
 
         private void button_voc_display_Click(object sender, EventArgs e)

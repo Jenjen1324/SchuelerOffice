@@ -48,12 +48,12 @@
             this.label_word_2lang = new System.Windows.Forms.Label();
             this.label_word_1lang = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button_ok = new System.Windows.Forms.Button();
-            this.button_abort = new System.Windows.Forms.Button();
             this.col_1lang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_2lang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_ok = new System.Windows.Forms.Button();
+            this.button_abort = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -242,28 +242,6 @@
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // button_ok
-            // 
-            this.button_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_ok.Location = new System.Drawing.Point(335, 478);
-            this.button_ok.Name = "button_ok";
-            this.button_ok.Size = new System.Drawing.Size(87, 23);
-            this.button_ok.TabIndex = 11;
-            this.button_ok.Text = "OK";
-            this.button_ok.UseVisualStyleBackColor = true;
-            // 
-            // button_abort
-            // 
-            this.button_abort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_abort.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.button_abort.Location = new System.Drawing.Point(239, 478);
-            this.button_abort.Name = "button_abort";
-            this.button_abort.Size = new System.Drawing.Size(90, 23);
-            this.button_abort.TabIndex = 12;
-            this.button_abort.Text = "Abbrechen";
-            this.button_abort.UseVisualStyleBackColor = true;
-            // 
             // col_1lang
             // 
             this.col_1lang.HeaderText = "1. Sprache";
@@ -290,6 +268,27 @@
             this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
+            // button_ok
+            // 
+            this.button_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_ok.Location = new System.Drawing.Point(335, 478);
+            this.button_ok.Name = "button_ok";
+            this.button_ok.Size = new System.Drawing.Size(87, 23);
+            this.button_ok.TabIndex = 11;
+            this.button_ok.Text = "OK";
+            this.button_ok.UseVisualStyleBackColor = true;
+            // 
+            // button_abort
+            // 
+            this.button_abort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_abort.DialogResult = System.Windows.Forms.DialogResult.Abort;
+            this.button_abort.Location = new System.Drawing.Point(239, 478);
+            this.button_abort.Name = "button_abort";
+            this.button_abort.Size = new System.Drawing.Size(90, 23);
+            this.button_abort.TabIndex = 12;
+            this.button_abort.Text = "Abbrechen";
+            this.button_abort.UseVisualStyleBackColor = true;
+            // 
             // AddVocabulary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,14 +314,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+            this.FormClosing += AddVocabulary_FormClosing;
 
         }
-
-        private void closeForm(object sender, System.EventArgs e)
-        {
-            this.Close();
-        }
-
 
         #endregion
 

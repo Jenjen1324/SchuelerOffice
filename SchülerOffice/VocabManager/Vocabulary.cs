@@ -44,40 +44,39 @@ namespace SchülerOffice.VocabManager
         {
             Type t = typeof(Vocabulary);
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("\t<Vocabulary>");
+            sb.AppendLine("<Vocabulary>");
             foreach (var val in t.GetProperties())
             {
                 if (val.Name == "words")
                 {
-                    sb.AppendLine("\t\t<words>");
+                    sb.AppendLine("\t<words>");
                     foreach (VocWord word in voc.words)
                     {
                         sb.AppendLine(
-                            String.Format("\t\t\t<word fromVal=\"{0}\" toVal=\"{1}\" desc=\"{2}\" />",
+                            String.Format("\t\t<word fromVal=\"{0}\" toVal=\"{1}\" desc=\"{2}\" />",
                             word.fromVal,
                             word.toVal,
                             word.desc
                             ));
                     }
-                    sb.AppendLine("\t\t</words>");
+                    sb.AppendLine("\t</words>");
                 }
                 else
                 {
                     sb.AppendLine(
-                        String.Format("\t\t<item key=\"{0}\">{1}</item>",
+                        String.Format("\t<item key=\"{0}\">{1}</item>",
                         val.Name,
                         val.GetValue(voc).ToString()));
                 }
             }
-            sb.AppendLine("\t</Vocabulary>");
+            sb.AppendLine("</Vocabulary>");
             return sb.ToString();
         }
 
-        public static List<Vocabulary> xmlToVocab(string xml)
+        public static Vocabulary xmlToVocab(string xml)
         {
             StringReader s = new StringReader(xml);
             XmlReader xmlr = XmlReader.Create(s);
-            List<Vocabulary> vocab = new List<Vocabulary>();
             Vocabulary current = null;
 
             while (xmlr.Read())
@@ -105,16 +104,11 @@ namespace SchülerOffice.VocabManager
                 }
                 if (xmlr.Name == "Vocabulary" && xmlr.NodeType == XmlNodeType.EndElement)
                 {
-                    vocab.Add(current);
-                    current = null;
+                    return current;
                 }
             }
-            if (vocab == null)
-            {
-                return new List<Vocabulary>();
-            }
 
-            return vocab;
+            return new Vocabulary();
         }
     }
 

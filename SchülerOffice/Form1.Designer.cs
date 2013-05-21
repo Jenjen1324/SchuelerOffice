@@ -84,7 +84,6 @@
             this.col_lang2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button_voc_display = new System.Windows.Forms.Button();
             this.button_voc_test = new System.Windows.Forms.Button();
             this.button_voc_learn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -92,6 +91,9 @@
             this.button_voc_edit = new System.Windows.Forms.Button();
             this.button_voc_new = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -103,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_voc)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -588,6 +591,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.dataGridView_voc);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.groupBox1);
@@ -632,29 +636,17 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button_voc_display);
             this.groupBox2.Controls.Add(this.button_voc_test);
             this.groupBox2.Controls.Add(this.button_voc_learn);
-            this.groupBox2.Location = new System.Drawing.Point(175, 116);
+            this.groupBox2.Location = new System.Drawing.Point(175, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(155, 107);
+            this.groupBox2.Size = new System.Drawing.Size(155, 69);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            // 
-            // button_voc_display
-            // 
-            this.button_voc_display.Location = new System.Drawing.Point(6, 77);
-            this.button_voc_display.Name = "button_voc_display";
-            this.button_voc_display.Size = new System.Drawing.Size(143, 23);
-            this.button_voc_display.TabIndex = 2;
-            this.button_voc_display.Text = "Alles anzeigen";
-            this.button_voc_display.UseVisualStyleBackColor = true;
-            this.button_voc_display.Click += new System.EventHandler(this.button_voc_display_Click);
             // 
             // button_voc_test
             // 
-            this.button_voc_test.Location = new System.Drawing.Point(6, 48);
+            this.button_voc_test.Location = new System.Drawing.Point(6, 39);
             this.button_voc_test.Name = "button_voc_test";
             this.button_voc_test.Size = new System.Drawing.Size(143, 23);
             this.button_voc_test.TabIndex = 1;
@@ -664,7 +656,7 @@
             // 
             // button_voc_learn
             // 
-            this.button_voc_learn.Location = new System.Drawing.Point(6, 19);
+            this.button_voc_learn.Location = new System.Drawing.Point(6, 10);
             this.button_voc_learn.Name = "button_voc_learn";
             this.button_voc_learn.Size = new System.Drawing.Size(143, 23);
             this.button_voc_learn.TabIndex = 0;
@@ -679,14 +671,13 @@
             this.groupBox1.Controls.Add(this.button_voc_new);
             this.groupBox1.Location = new System.Drawing.Point(175, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(155, 107);
+            this.groupBox1.Size = new System.Drawing.Size(155, 96);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // button_voc_delete
             // 
-            this.button_voc_delete.Location = new System.Drawing.Point(6, 77);
+            this.button_voc_delete.Location = new System.Drawing.Point(6, 68);
             this.button_voc_delete.Name = "button_voc_delete";
             this.button_voc_delete.Size = new System.Drawing.Size(143, 23);
             this.button_voc_delete.TabIndex = 2;
@@ -696,7 +687,7 @@
             // 
             // button_voc_edit
             // 
-            this.button_voc_edit.Location = new System.Drawing.Point(6, 48);
+            this.button_voc_edit.Location = new System.Drawing.Point(6, 39);
             this.button_voc_edit.Name = "button_voc_edit";
             this.button_voc_edit.Size = new System.Drawing.Size(143, 23);
             this.button_voc_edit.TabIndex = 1;
@@ -706,7 +697,7 @@
             // 
             // button_voc_new
             // 
-            this.button_voc_new.Location = new System.Drawing.Point(6, 19);
+            this.button_voc_new.Location = new System.Drawing.Point(6, 10);
             this.button_voc_new.Name = "button_voc_new";
             this.button_voc_new.Size = new System.Drawing.Size(143, 23);
             this.button_voc_new.TabIndex = 0;
@@ -721,6 +712,35 @@
             this.treeView1.Size = new System.Drawing.Size(166, 394);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button4);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Location = new System.Drawing.Point(175, 180);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(155, 71);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(6, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(143, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Teilen";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 41);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(143, 23);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Herunterladen";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -748,6 +768,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_voc)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -787,7 +808,6 @@
         private System.Windows.Forms.DataGridView dataGridView_timeTable;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button_voc_display;
         private System.Windows.Forms.Button button_voc_test;
         private System.Windows.Forms.Button button_voc_learn;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -814,6 +834,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_lang1;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_lang2;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_desc;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
     }
 }
 
