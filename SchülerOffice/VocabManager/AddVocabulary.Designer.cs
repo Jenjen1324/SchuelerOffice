@@ -271,6 +271,7 @@
             // button_ok
             // 
             this.button_ok.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button_ok.Location = new System.Drawing.Point(335, 478);
             this.button_ok.Name = "button_ok";
             this.button_ok.Size = new System.Drawing.Size(87, 23);
@@ -314,7 +315,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-            this.FormClosing += AddVocabulary_FormClosing;
 
         }
 

@@ -17,10 +17,10 @@ namespace SchülerOffice.VocabManager.Trainer
     {
         private static Vocabulary vocab = new Vocabulary();
         private static Vocabulary currentVocab = new Vocabulary();
-        private static int correct = 0;
-        private static int incorrect = 0;
+        private static int correct;
+        private static int incorrect;
         private static ArrayList list = new ArrayList();
-        private static int currentWord = 0;
+        private static int currentWord;
         private static Stopwatch time = new Stopwatch();
 
         public Trainer(Vocabulary v)
@@ -30,7 +30,12 @@ namespace SchülerOffice.VocabManager.Trainer
             currentVocab = v;
             label_1lang.Text = vocab.fromLang;
             label_2lang.Text = vocab.toLang;
-           this.ActiveControl = button_start;
+            this.ActiveControl = button_start;
+
+            foreach (VocWord word in currentVocab.words)
+            {
+                word.correct = false;
+            }
         }
 
         private void start()
@@ -38,42 +43,43 @@ namespace SchülerOffice.VocabManager.Trainer
             button_check.Enabled = true;
             time.Reset();
             time.Start();
-            incorrect = 0;
             correct = 0;
-            Vocabulary v = new Vocabulary();
-            foreach (VocWord word in currentVocab.words)
-            {
-                if (word.correct)
-                {
-                    correct++;
-                }
-                else
-                {
-                    incorrect++;
-                    v.words.Add(word);
-                }
-            }
-            currentVocab = v;
+            incorrect = 0;
             currentWord = 0;
-            list = Data.RandomNumbers(incorrect);
+            list = Data.RandomNumbers(currentVocab.words.Count);
             displayWord();
         }
 
-        private void displayWord()
+        private bool displayWord()
         {
+            VocWord word = getCurrentWord();
+            while (word.correct)
+            {
+                currentWord++;
+                if (list.Count == currentWord)
+                {
+                    word = getCurrentWord();
+                }
+                else
+                {
+                    return false;
+                }
+            }
             textBox_1lang.Text = getCurrentWord().fromVal;
             textBox_cright.Text = correct.ToString();
             textBox_cwrong.Text = incorrect.ToString();
             textBox_cremaining.Text = (currentVocab.words.Capacity- currentWord -1).ToString();
+            textBox_2lang.Text = "";
+            return true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             VocWord word = getCurrentWord();
+
             if (textBox_2lang.Text == word.toVal)
             {
                 correct++;
-                incorrect--;
                 changeCurrentWord(true);
                 textBox_response.ForeColor = Color.Green;
                 textBox_response.Text = "Richtig!";
@@ -85,19 +91,16 @@ namespace SchülerOffice.VocabManager.Trainer
                 textBox_response.ForeColor = Color.Red;
                 textBox_response.Text = "Falsch!" + Environment.NewLine +
                     "Die richtige Lösung wäre: "+ word.toVal;
+            }
 
-            }
-            displayWord();
-            if (list.Count != currentWord + 1)
-            {
-                currentWord++;
-                textBox_2lang.Text = "";
-                
-                
-            }
-            else
+            currentWord++;
+
+            if (!displayWord())
             {
                 timer1.Stop();
+                textBox_cright.Text = correct.ToString();
+                textBox_cwrong.Text = incorrect.ToString();
+                textBox_cremaining.Text = (currentVocab.words.Capacity - currentWord - 1).ToString();
                 Data.messageBox("Gut gemacht!", "Du bist fertig!");
                 button_check.Enabled = false;
 
@@ -105,14 +108,16 @@ namespace SchülerOffice.VocabManager.Trainer
                 {
                     Thread.Sleep(1000);
                     textBox_response.ForeColor = Color.Black;
-                    textBox_response.Text = "Du bist fertig hast aber nicht alle Wörter richtig gehabt!" + Environment.NewLine + 
+                    textBox_response.Text = "Du bist fertig hast aber nicht alle Wörter richtig gehabt!" + Environment.NewLine +
                         "Wenn du die falschen Wörter noch üben willst drücke auf Start";
                     button_start.Enabled = true;
                     time.Stop();
                 }
-
-                textBox_response.ForeColor = Color.Green;
-                textBox_response.Text = "Gut gemacht! Du hast alle Wörter richtig gehabt!";
+                else
+                {
+                    textBox_response.ForeColor = Color.Green;
+                    textBox_response.Text = "Gut gemacht! Du hast alle Wörter richtig gehabt!";
+                }
             }
 
         }
@@ -121,11 +126,11 @@ namespace SchülerOffice.VocabManager.Trainer
         {
             try
             {
-                return currentVocab.words[Convert.ToInt32(list[currentWord]) - 1];
+                return currentVocab.words[Convert.ToInt32(list[currentWord])-1];
             }
             catch
             {
-                return null;
+                throw new Exception("Couldn't get the current word!");
             }
         }
 
