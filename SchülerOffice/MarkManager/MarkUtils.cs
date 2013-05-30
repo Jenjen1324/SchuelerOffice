@@ -104,8 +104,10 @@ namespace SchülerOffice
                             textBox_requiredMark.Text = "";
                             foreach (float f in targetMarks)
                             {
-                                
-                                textBox_requiredMark.Text = textBox_requiredMark.Text + Convert.ToString(f) + "\n\r";
+                                if (f != 0)
+                                {
+                                    textBox_requiredMark.Text = textBox_requiredMark.Text + Convert.ToString(f) + ",";
+                                }
                             }
                         }
                     }
