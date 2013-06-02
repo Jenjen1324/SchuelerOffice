@@ -17,29 +17,33 @@ namespace SchülerOffice
         public MarkUtils()
         {
             InitializeComponent();
+
             foreach (string s in Data.classes)
             {
                 comboBox_classes.Items.Add(s);
+                Series series = new Series();
+                series.LegendText = s;
+                series.ChartType = SeriesChartType.Line;
+                series.YValueType = ChartValueType.String;
+                int i = 0;
+                foreach (Mark m in Data.marks)
+                {
+                    if (m._class == s)
+                    {
+                        DataPoint dp = new DataPoint();
+                        dp.XValue = i;
+                        dp.YValues = new double[] { m.mark };
+                        dp.Label = m.name;
+                        series.Points.Add(dp);
+                    }
+                }
+                chart_marks.Series.Add(series);
             }
             comboBox_classes.SelectedIndex = 0;
         }
 
         private void comboBox_classes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            chart_marks.Series[0].Points.Clear();
-            int i = 0;
-            foreach ( Mark m in Data.marks)
-            {
-                if(m._class == comboBox_classes.SelectedItem.ToString())
-                {
-                    DataPoint dp = new DataPoint();
-                    dp.XValue = i;
-                    dp.YValues = new double[] {m.mark};
-
-                    chart_marks.Series[0].Points.Add(dp);
-                    i++;
-                }
-            }
             textBox_averageMark.Text = Convert.ToString(calculateAverageMark(comboBox_classes.Text));
         }
 
@@ -60,8 +64,6 @@ namespace SchülerOffice
 
         private void button_calcuteTargetMark_Click(object sender, EventArgs e)
         {
-            //WIP
-            //throw new NotImplementedException();
             if (textBox_targetMark.Text != "")
             {
                 try

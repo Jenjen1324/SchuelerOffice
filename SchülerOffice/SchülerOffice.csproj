@@ -58,6 +58,7 @@
       <DependentUpon>AddHomework.cs</DependentUpon>
     </Compile>
     <Compile Include="HomeWorkManager\HomeWork.cs" />
+    <Compile Include="MapiMailMessage.cs" />
     <Compile Include="MarkManager\AddClass.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="VocabManager\AddVocabulary.Designer.cs">
       <DependentUpon>AddVocabulary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VocabManager\EmailPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VocabManager\EmailPrompt.Designer.cs">
+      <DependentUpon>EmailPrompt.cs</DependentUpon>
     </Compile>
     <Compile Include="VocabManager\Trainer\Trainer.cs">
       <SubType>Form</SubType>
@@ -131,6 +138,9 @@
     </Compile>
     <EmbeddedResource Include="VocabManager\AddVocabulary.resx">
       <DependentUpon>AddVocabulary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VocabManager\EmailPrompt.resx">
+      <DependentUpon>EmailPrompt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VocabManager\Trainer\Trainer.resx">
       <DependentUpon>Trainer.cs</DependentUpon>

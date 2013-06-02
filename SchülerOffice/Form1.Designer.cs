@@ -79,6 +79,9 @@
             this.Column_thu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_fri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button_voc_import = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -102,6 +105,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_voc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -118,7 +122,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(788, 430);
+            this.tabControl1.Size = new System.Drawing.Size(788, 431);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -128,7 +132,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(780, 404);
+            this.tabPage1.Size = new System.Drawing.Size(780, 405);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -164,7 +168,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(780, 404);
+            this.tabPage2.Size = new System.Drawing.Size(780, 405);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Noten";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -247,6 +251,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "0.25x",
@@ -419,7 +424,7 @@
             this.tabPage3.Controls.Add(this.dataGridView_timeTable);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(780, 404);
+            this.tabPage3.Size = new System.Drawing.Size(780, 405);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hausaufgaben";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -591,6 +596,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.groupBox3);
             this.tabPage4.Controls.Add(this.dataGridView_voc);
             this.tabPage4.Controls.Add(this.groupBox2);
@@ -598,10 +604,40 @@
             this.tabPage4.Controls.Add(this.treeView1);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(780, 404);
+            this.tabPage4.Size = new System.Drawing.Size(780, 405);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Voci-Trainer";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button_voc_import);
+            this.groupBox4.Controls.Add(this.button5);
+            this.groupBox4.Location = new System.Drawing.Point(175, 257);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(155, 72);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            // 
+            // button_voc_import
+            // 
+            this.button_voc_import.Location = new System.Drawing.Point(6, 41);
+            this.button_voc_import.Name = "button_voc_import";
+            this.button_voc_import.Size = new System.Drawing.Size(143, 23);
+            this.button_voc_import.TabIndex = 1;
+            this.button_voc_import.Text = "Importieren";
+            this.button_voc_import.UseVisualStyleBackColor = true;
+            this.button_voc_import.Click += new System.EventHandler(this.button_voc_import_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 12);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(143, 23);
+            this.button5.TabIndex = 0;
+            this.button5.Text = "Über E-Mail teilen";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox3
             // 
@@ -748,7 +784,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 430);
+            this.ClientSize = new System.Drawing.Size(788, 431);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -767,6 +803,7 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_timeTable)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_voc)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -839,6 +876,9 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button button_voc_import;
+        private System.Windows.Forms.Button button5;
     }
 }
 

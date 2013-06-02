@@ -33,6 +33,7 @@ namespace SchülerOffice
                 }
                 treeView_mark.Nodes.Add(node);
             }
+            treeView_mark.ExpandAll();
         }
 
         private void button_mark_calculateMark_Click(object sender, EventArgs e)
@@ -132,13 +133,14 @@ namespace SchülerOffice
                 }
                 string _name = textBox_mark_name.Text;
                 DateTime _date = Convert.ToDateTime(dateTimePicker_mark.Text);
-                float _mark = Convert.ToSingle(textBox_mark_mark.Text);
-                float _pointsGot = Convert.ToSingle(textBox_mark_points.Text);
-                float _pointsMax = Convert.ToSingle(textBox_mark_mpoints.Text);
+                float _mark = Convert.ToSingle((textBox_mark_mark.Text != "" ? textBox_mark_mark.Text : "0"));
+                float _pointsGot = Convert.ToSingle((textBox_mark_points.Text != "" ? textBox_mark_mark.Text : "0"));
+                float _pointsMax = Convert.ToSingle((textBox_mark_mpoints.Text != "" ? textBox_mark_mark.Text : "0"));
                 string _note = textBox_mark_note.Text;
                 Mark m = new Mark(_class,_name,_date,_mark,_pointsGot, _pointsMax,_note);
                 Data.marks.Add(m);
                 UpdateMarks();
+                button_mark_clear_Click(null,null);
             }
         }
 

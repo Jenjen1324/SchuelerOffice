@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MarkUtils));
             this.comboBox_classes = new System.Windows.Forms.ComboBox();
             this.chart_marks = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -50,8 +49,10 @@
             this.label_targetMark = new System.Windows.Forms.Label();
             this.label_averageMark = new System.Windows.Forms.Label();
             this.textBox_averageMark = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart_marks)).BeginInit();
             this.groupBox_calculateTargetMark.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBox_classes
@@ -66,25 +67,29 @@
             // 
             // chart_marks
             // 
+            this.chart_marks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.MajorTickMark.Enabled = false;
+            chartArea1.AxisX.Minimum = 1D;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.AxisY.Maximum = 6D;
+            chartArea1.AxisY.Minimum = 1D;
             chartArea1.Name = "ChartArea1";
             this.chart_marks.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart_marks.Legends.Add(legend1);
             this.chart_marks.Location = new System.Drawing.Point(271, 12);
             this.chart_marks.Name = "chart_marks";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_marks.Series.Add(series1);
-            this.chart_marks.Size = new System.Drawing.Size(312, 226);
+            this.chart_marks.Size = new System.Drawing.Size(312, 298);
             this.chart_marks.TabIndex = 2;
             this.chart_marks.Text = "chart1";
             // 
             // checkBox_additionalMark
             // 
             this.checkBox_additionalMark.AutoSize = true;
-            this.checkBox_additionalMark.Location = new System.Drawing.Point(12, 71);
+            this.checkBox_additionalMark.Location = new System.Drawing.Point(6, 19);
             this.checkBox_additionalMark.Name = "checkBox_additionalMark";
             this.checkBox_additionalMark.Size = new System.Drawing.Size(99, 17);
             this.checkBox_additionalMark.TabIndex = 3;
@@ -101,7 +106,7 @@
             "2x",
             "3x",
             "4x"});
-            this.comboBox2.Location = new System.Drawing.Point(178, 95);
+            this.comboBox2.Location = new System.Drawing.Point(172, 43);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(57, 21);
             this.comboBox2.TabIndex = 5;
@@ -110,7 +115,7 @@
             // radioButton_aM_countsAsMark
             // 
             this.radioButton_aM_countsAsMark.AutoSize = true;
-            this.radioButton_aM_countsAsMark.Location = new System.Drawing.Point(19, 96);
+            this.radioButton_aM_countsAsMark.Location = new System.Drawing.Point(13, 44);
             this.radioButton_aM_countsAsMark.Name = "radioButton_aM_countsAsMark";
             this.radioButton_aM_countsAsMark.Size = new System.Drawing.Size(92, 17);
             this.radioButton_aM_countsAsMark.TabIndex = 6;
@@ -120,7 +125,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(178, 69);
+            this.textBox1.Location = new System.Drawing.Point(172, 17);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(26, 20);
             this.textBox1.TabIndex = 7;
@@ -132,7 +137,7 @@
             "10%",
             "20%",
             "50%"});
-            this.comboBox3.Location = new System.Drawing.Point(178, 122);
+            this.comboBox3.Location = new System.Drawing.Point(172, 70);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(57, 21);
             this.comboBox3.TabIndex = 8;
@@ -141,7 +146,7 @@
             // radioButton_aM_countsAsPrecentage
             // 
             this.radioButton_aM_countsAsPrecentage.AutoSize = true;
-            this.radioButton_aM_countsAsPrecentage.Location = new System.Drawing.Point(18, 123);
+            this.radioButton_aM_countsAsPrecentage.Location = new System.Drawing.Point(12, 71);
             this.radioButton_aM_countsAsPrecentage.Name = "radioButton_aM_countsAsPrecentage";
             this.radioButton_aM_countsAsPrecentage.Size = new System.Drawing.Size(154, 17);
             this.radioButton_aM_countsAsPrecentage.TabIndex = 9;
@@ -151,7 +156,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(210, 69);
+            this.textBox2.Location = new System.Drawing.Point(204, 17);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(25, 20);
             this.textBox2.TabIndex = 10;
@@ -159,7 +164,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(203, 72);
+            this.label1.Location = new System.Drawing.Point(197, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 11;
@@ -172,18 +177,18 @@
             this.groupBox_calculateTargetMark.Controls.Add(this.label_requiredMark);
             this.groupBox_calculateTargetMark.Controls.Add(this.textBox_targetMark);
             this.groupBox_calculateTargetMark.Controls.Add(this.label_targetMark);
-            this.groupBox_calculateTargetMark.Location = new System.Drawing.Point(12, 149);
+            this.groupBox_calculateTargetMark.Location = new System.Drawing.Point(12, 177);
             this.groupBox_calculateTargetMark.Name = "groupBox_calculateTargetMark";
-            this.groupBox_calculateTargetMark.Size = new System.Drawing.Size(223, 119);
+            this.groupBox_calculateTargetMark.Size = new System.Drawing.Size(240, 101);
             this.groupBox_calculateTargetMark.TabIndex = 12;
             this.groupBox_calculateTargetMark.TabStop = false;
             this.groupBox_calculateTargetMark.Text = "Zielnote berechnen";
             // 
             // button_calcuteTargetMark
             // 
-            this.button_calcuteTargetMark.Location = new System.Drawing.Point(108, 45);
+            this.button_calcuteTargetMark.Location = new System.Drawing.Point(132, 45);
             this.button_calcuteTargetMark.Name = "button_calcuteTargetMark";
-            this.button_calcuteTargetMark.Size = new System.Drawing.Size(75, 23);
+            this.button_calcuteTargetMark.Size = new System.Drawing.Size(97, 23);
             this.button_calcuteTargetMark.TabIndex = 16;
             this.button_calcuteTargetMark.Text = "Berechnen";
             this.button_calcuteTargetMark.UseVisualStyleBackColor = true;
@@ -192,10 +197,9 @@
             // textBox_requiredMark
             // 
             this.textBox_requiredMark.Location = new System.Drawing.Point(132, 74);
-            this.textBox_requiredMark.Multiline = true;
             this.textBox_requiredMark.Name = "textBox_requiredMark";
             this.textBox_requiredMark.ReadOnly = true;
-            this.textBox_requiredMark.Size = new System.Drawing.Size(51, 39);
+            this.textBox_requiredMark.Size = new System.Drawing.Size(97, 20);
             this.textBox_requiredMark.TabIndex = 15;
             // 
             // label_requiredMark
@@ -211,7 +215,7 @@
             // 
             this.textBox_targetMark.Location = new System.Drawing.Point(132, 19);
             this.textBox_targetMark.Name = "textBox_targetMark";
-            this.textBox_targetMark.Size = new System.Drawing.Size(51, 20);
+            this.textBox_targetMark.Size = new System.Drawing.Size(97, 20);
             this.textBox_targetMark.TabIndex = 13;
             // 
             // label_targetMark
@@ -234,36 +238,49 @@
             // 
             // textBox_averageMark
             // 
-            this.textBox_averageMark.Location = new System.Drawing.Point(178, 43);
+            this.textBox_averageMark.Location = new System.Drawing.Point(184, 43);
             this.textBox_averageMark.Name = "textBox_averageMark";
             this.textBox_averageMark.ReadOnly = true;
-            this.textBox_averageMark.Size = new System.Drawing.Size(26, 20);
+            this.textBox_averageMark.Size = new System.Drawing.Size(57, 20);
             this.textBox_averageMark.TabIndex = 14;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBox_additionalMark);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.radioButton_aM_countsAsMark);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.radioButton_aM_countsAsPrecentage);
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Enabled = false;
+            this.groupBox1.Location = new System.Drawing.Point(12, 69);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(240, 102);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Mündliche Note";
             // 
             // MarkUtils
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 381);
+            this.ClientSize = new System.Drawing.Size(595, 322);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox_averageMark);
             this.Controls.Add(this.label_averageMark);
             this.Controls.Add(this.groupBox_calculateTargetMark);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.radioButton_aM_countsAsPrecentage);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.radioButton_aM_countsAsMark);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.checkBox_additionalMark);
             this.Controls.Add(this.chart_marks);
             this.Controls.Add(this.comboBox_classes);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MarkUtils";
             this.Text = "MarkUtils";
             ((System.ComponentModel.ISupportInitialize)(this.chart_marks)).EndInit();
             this.groupBox_calculateTargetMark.ResumeLayout(false);
             this.groupBox_calculateTargetMark.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,5 +306,6 @@
         private System.Windows.Forms.Label label_targetMark;
         private System.Windows.Forms.Label label_averageMark;
         private System.Windows.Forms.TextBox textBox_averageMark;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

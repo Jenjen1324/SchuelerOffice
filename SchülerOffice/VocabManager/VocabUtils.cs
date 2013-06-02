@@ -1,10 +1,12 @@
 ﻿using SchülerOffice.VocabManager;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace SchülerOffice
 {
@@ -24,6 +26,7 @@ namespace SchülerOffice
                 }
                 treeView1.Nodes[getIdentifier(vocab,false)].Nodes.Add(getIdentifier(vocab,true),vocab.name);
             }
+            treeView1.ExpandAll();
         }
 
         /// <summary>
@@ -121,6 +124,70 @@ namespace SchülerOffice
             }
 
             return null;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Vocabulary vocab = getSelectedVocabulary();
+            if (vocab != null)
+            {
+                EmailPrompt ep = new EmailPrompt();
+                if (ep.ShowDialog() == DialogResult.OK)
+                {
+                    if (!Directory.Exists(Data.tmpFolder))
+                    {
+                        Directory.CreateDirectory(Data.tmpFolder);
+                    }
+                    string[] files = Directory.GetFiles(Data.tmpFolder);
+                    foreach (string file in files)
+                    {
+                        File.Delete(file);
+                    }
+
+                    
+                    string xml = Vocabulary.vocabToXml(vocab);
+                    string _file = Data.tmpFolder + vocab.name + ".xml";
+                    File.WriteAllText(_file, xml);
+
+                    MapiMailMessage message = new MapiMailMessage("Ich teile ein Vokabular mit dir: " + vocab.name, "Speichere den Anhang, wähle \"Importieren\" im Vokabular-Trainer und wähle den gespeicherten Anhang aus!");
+                    message.Recipients.Add(ep.email);
+                    message.Files.Add(_file);
+                    message.ShowDialog();
+
+                    /*string args = "?subject=" + "Ich teile ein Vokabular mit dir: " + vocab.name
+                        + "&body=" + "Speichere den Anhang, wähle \"Importieren\" im Vokabular-Trainer und wähle den gespeicherten Anhang aus!"
+                        + "&Attach=\"" + Data.tmpFolder + vocab.name + ".xml\""
+                       ;
+                    MessageBox.Show(args);
+
+                    System.Diagnostics.Process.Start("mailto:" + ep.email + args);*/
+                }
+            }
+        }
+
+        private void button_voc_import_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "xml files (*.xml)|*.xml";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string filename = ofd.FileName;
+                    string data = File.ReadAllText(filename);
+                    Vocabulary vocab = Vocabulary.xmlToVocab(data);
+                    if (vocab.name == "" || vocab.name == null)
+                    {
+                        throw new Exception("Invalid vocabulary!");
+                    }
+                    Data.vocabulary.Add(vocab);
+                    UpdateVocabulary();
+                }
+                catch
+                {
+                    Data.messageBox("Error!", "Invalides vokabular!");
+                }
+            }
         }
     }
 }

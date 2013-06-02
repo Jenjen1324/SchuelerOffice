@@ -19,6 +19,7 @@ namespace SchülerOffice
         internal static string timetableFile = workingDir + "\\timetable.xml";
         internal static string homeWorkFile = workingDir + "\\homework.xml";
         internal static string vocabularyDir = workingDir + "\\vocabularies\\";
+        internal static string tmpFolder = workingDir + "\\tmp\\";
 
         internal static List<string> classes = new List<string>();
         internal static List<Mark> marks;
@@ -270,13 +271,15 @@ namespace SchülerOffice
                 Directory.CreateDirectory(vocabularyDir);
             }
 
+            string[] files = Directory.GetFiles(vocabularyDir);
+            foreach (string file in files)
+            {
+                File.Delete(file);
+            }
+
             foreach (Vocabulary voc in Data.vocabulary)
             {
-                string[] files = Directory.GetFiles(vocabularyDir);
-                foreach (string file in files)
-                {
-                    File.Delete(file);
-                }
+
 
                 string content = Vocabulary.vocabToXml(voc);
                 string fname = vocabularyDir + voc.name + ".xml";
