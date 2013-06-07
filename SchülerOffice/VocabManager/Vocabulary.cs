@@ -66,7 +66,7 @@ namespace SchülerOffice.VocabManager
                     sb.AppendLine(
                         String.Format("\t<item key=\"{0}\">{1}</item>",
                         val.Name,
-                        val.GetValue(voc).ToString()));
+                        val.GetValue(voc,null).ToString()));
                 }
             }
             sb.AppendLine("</Vocabulary>");

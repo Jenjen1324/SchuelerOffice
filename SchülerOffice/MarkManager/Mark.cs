@@ -49,7 +49,7 @@ namespace SchülerOffice
                     //Name of property
                     property.Name,
                     //Gets value from instance and converts to string
-                    property.GetValue(mark).ToString()));
+                    property.GetValue(mark,null).ToString()));
             }
             xml.AppendLine("\t</mark>");
             return xml.ToString();
