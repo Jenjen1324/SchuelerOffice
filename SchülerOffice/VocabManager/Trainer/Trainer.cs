@@ -52,20 +52,13 @@ namespace SchülerOffice.VocabManager.Trainer
 
         private bool displayWord()
         {
-            VocWord word = getCurrentWord();
-            while (word.correct)
+            
+            if (list.Count == currentWord)
             {
-                currentWord++;
-                if (list.Count == currentWord)
-                {
-                    word = getCurrentWord();
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
-            textBox_1lang.Text = getCurrentWord().fromVal;
+            VocWord word = getCurrentWord();
+            textBox_1lang.Text = word.fromVal;
             textBox_cright.Text = correct.ToString();
             textBox_cwrong.Text = incorrect.ToString();
             textBox_cremaining.Text = (currentVocab.words.Capacity- currentWord -1).ToString();
@@ -92,9 +85,7 @@ namespace SchülerOffice.VocabManager.Trainer
                 textBox_response.Text = "Falsch!" + Environment.NewLine +
                     "Die richtige Lösung wäre: "+ word.toVal;
             }
-
             currentWord++;
-
             if (!displayWord())
             {
                 timer1.Stop();
@@ -119,6 +110,7 @@ namespace SchülerOffice.VocabManager.Trainer
                     textBox_response.Text = "Gut gemacht! Du hast alle Wörter richtig gehabt!";
                 }
             }
+            
 
         }
 
