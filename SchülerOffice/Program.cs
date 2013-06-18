@@ -26,7 +26,7 @@ namespace SchülerOffice
             Data.LoadVocabulary();
 
             bool running = true;
-
+            
             while (running)
             {
                 //try
